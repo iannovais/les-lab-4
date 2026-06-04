@@ -1,0 +1,243 @@
+{
+  "dataset": {
+    "repo_count": 500,
+    "commit_count": 550727,
+    "pr_count": 102986,
+    "commit_date_range": {
+      "min": "2017-04-06T15:42:49+00:00",
+      "max": "2026-05-29T17:02:19+00:00"
+    },
+    "pr_date_range": {
+      "min": "2025-05-24T11:13:43+00:00",
+      "max": "2026-05-29T20:11:16+00:00"
+    },
+    "top_repos_by_stars": [
+      {
+        "repo": "public-apis/public-apis",
+        "stars": 436823,
+        "contributors": 1441,
+        "commits_5_years": 1793
+      },
+      {
+        "repo": "EbookFoundation/free-programming-books",
+        "stars": 388835,
+        "contributors": 3495,
+        "commits_5_years": 3920
+      },
+      {
+        "repo": "vinta/awesome-python",
+        "stars": 299247,
+        "contributors": 542,
+        "commits_5_years": 835
+      },
+      {
+        "repo": "TheAlgorithms/Python",
+        "stars": 221341,
+        "contributors": 1330,
+        "commits_5_years": 1554
+      },
+      {
+        "repo": "Significant-Gravitas/AutoGPT",
+        "stars": 184481,
+        "contributors": 819,
+        "commits_5_years": 8606
+      },
+      {
+        "repo": "yt-dlp/yt-dlp",
+        "stars": 164947,
+        "contributors": 1729,
+        "commits_5_years": 4878
+      },
+      {
+        "repo": "NousResearch/hermes-agent",
+        "stars": 164441,
+        "contributors": 1289,
+        "commits_5_years": 9291
+      },
+      {
+        "repo": "AUTOMATIC1111/stable-diffusion-webui",
+        "stars": 163242,
+        "contributors": 639,
+        "commits_5_years": 7689
+      },
+      {
+        "repo": "huggingface/transformers",
+        "stars": 160907,
+        "contributors": 3943,
+        "commits_5_years": 15682
+      },
+      {
+        "repo": "521xueweihan/HelloGitHub",
+        "stars": 158282,
+        "contributors": 11,
+        "commits_5_years": 117
+      }
+    ],
+    "top_repos_by_commits": [
+      {
+        "repo": "SimplifyJobs/Summer2026-Internships",
+        "commits": 28547
+      },
+      {
+        "repo": "PostHog/posthog",
+        "commits": 19470
+      },
+      {
+        "repo": "getsentry/sentry",
+        "commits": 18800
+      },
+      {
+        "repo": "BerriAI/litellm",
+        "commits": 17179
+      },
+      {
+        "repo": "pytorch/pytorch",
+        "commits": 16821
+      },
+      {
+        "repo": "home-assistant/core",
+        "commits": 15488
+      },
+      {
+        "repo": "airbytehq/airbyte",
+        "commits": 13156
+      },
+      {
+        "repo": "odoo/odoo",
+        "commits": 12024
+      },
+      {
+        "repo": "DrewThomasson/ebook2audiobook",
+        "commits": 11810
+      },
+      {
+        "repo": "harvard-edge/cs249r_book",
+        "commits": 11263
+      }
+    ],
+    "stars_hist": [
+      {
+        "bin": "<1k",
+        "count": 0
+      },
+      {
+        "bin": "1k-10k",
+        "count": 0
+      },
+      {
+        "bin": "10k-50k",
+        "count": 414
+      },
+      {
+        "bin": "50k-100k",
+        "count": 66
+      },
+      {
+        "bin": "100k+",
+        "count": 20
+      }
+    ]
+  },
+  "q1": {
+    "size_class_counts": [
+      {
+        "size": "small",
+        "total": 250776,
+        "bug_fix": 90338,
+        "non_bug_fix": 160438,
+        "bug_fix_rate": 0.3602
+      },
+      {
+        "size": "medium",
+        "total": 224488,
+        "bug_fix": 78556,
+        "non_bug_fix": 145932,
+        "bug_fix_rate": 0.3499
+      },
+      {
+        "size": "large",
+        "total": 75463,
+        "bug_fix": 23370,
+        "non_bug_fix": 52093,
+        "bug_fix_rate": 0.3097
+      }
+    ]
+  },
+  "q2": {
+    "size_class_metrics": [
+      {
+        "size": "small",
+        "pr_count": 31024,
+        "comments_median": 1.0,
+        "comments_density_median": 0.125,
+        "first_review_median_min": 3.9833,
+        "close_median_hours": 3.3326
+      },
+      {
+        "size": "medium",
+        "pr_count": 24446,
+        "comments_median": 1.0,
+        "comments_density_median": 0.0233,
+        "first_review_median_min": 4.7333,
+        "close_median_hours": 6.7117
+      },
+      {
+        "size": "large",
+        "pr_count": 47516,
+        "comments_median": 2.0,
+        "comments_density_median": 0.0039,
+        "first_review_median_min": 5.5833,
+        "close_median_hours": 8.2056
+      }
+    ]
+  },
+  "q3": {
+    "size_class_reverts": [
+      {
+        "size": "small",
+        "total": 250776,
+        "revert": 3107,
+        "revert_rate": 0.0124
+      },
+      {
+        "size": "medium",
+        "total": 224488,
+        "revert": 4448,
+        "revert_rate": 0.0198
+      },
+      {
+        "size": "large",
+        "total": 75463,
+        "revert": 2665,
+        "revert_rate": 0.0353
+      }
+    ],
+    "size_class_complexity": [
+      {
+        "size": "small",
+        "commit_count": 78699,
+        "cc_mean_median": 3.6923,
+        "cc_max_median": 15.0,
+        "cc_density_median": 0.5128
+      },
+      {
+        "size": "medium",
+        "commit_count": 86292,
+        "cc_mean_median": 3.1333,
+        "cc_max_median": 18.0,
+        "cc_density_median": 0.0361
+      },
+      {
+        "size": "large",
+        "commit_count": 36914,
+        "cc_mean_median": 3.1786,
+        "cc_max_median": 26.0,
+        "cc_density_median": 0.0048
+      }
+    ]
+  },
+  "notes": {
+    "commit_size_rule": "small: files<=5 and loc<=25; large: files>5 and loc>125; medium: otherwise",
+    "pr_size_rule": "small: files<=5 and loc<=25; large: files>5 or loc>125; medium: otherwise"
+  }
+}
