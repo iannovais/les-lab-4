@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import gzip
 import json
 import statistics
 from collections import Counter, defaultdict
@@ -18,6 +19,7 @@ COMMIT_FILES = [
 PR_FILE = RAW_DIR / "prs_metodologia.csv"
 REPO_FILE = RAW_DIR / "repos_python_populares.csv"
 COMPLEXITY_FILE = RAW_DIR / "commits_complexidade.csv"
+MA_SZZ_FILE = RAW_DIR / "output_raszz.json.gz"
 
 SIZE_ORDER = ["small", "medium", "large"]
 
@@ -96,14 +98,32 @@ def read_complexity_keys() -> set[tuple[str, str]]:
     return keys
 
 
-def process_commits(complexity_keys: set[tuple[str, str]]):
-    q1_counts = {size: {"total": 0, "bug_fix": 0} for size in SIZE_ORDER}
+def load_bics_from_ma_szz() -> set[tuple[str, str]]:
+    """Load BICs (Bug-Introducing Commits) from MA-SZZ output (repo_name, commit_hash)."""
+    bics: set[tuple[str, str]] = set()
+    try:
+        with gzip.open(MA_SZZ_FILE, "rt", encoding="utf-8") as handle:
+            data = json.load(handle)
+            for entry in data:
+                repo_name = entry.get("repo_name", "").strip()
+                for bic_hash in entry.get("inducing_commit_hash", []):
+                    if bic_hash:
+                        bics.add((repo_name, bic_hash))
+    except FileNotFoundError:
+        print(f"Warning: {MA_SZZ_FILE} not found, Q1 BIC analysis disabled")
+    return bics
+
+
+def process_commits(complexity_keys: set[tuple[str, str]], bics: set[tuple[str, str]]):
+    q1_counts = {size: {"total": 0, "bic": 0} for size in SIZE_ORDER}
     q3_counts = {size: {"total": 0, "revert": 0} for size in SIZE_ORDER}
     commit_counts: Counter[str] = Counter()
     total_commits = 0
     commit_date_min = None
     commit_date_max = None
     complexity_lookup: dict[tuple[str, str], dict[str, int | str]] = {}
+    q1_locs: dict[str, list[int]] = {size: [] for size in SIZE_ORDER}  # For LOC distribution
+    q1_bic_locs: dict[str, list[int]] = {size: [] for size in SIZE_ORDER}  # For BIC LOC distribution
 
     for path in COMMIT_FILES:
         with path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
@@ -113,14 +133,18 @@ def process_commits(complexity_keys: set[tuple[str, str]]):
                 commit_sha = row.get("commit_sha", "").strip()
                 files_changed = parse_int(row.get("files_changed", "0"))
                 loc_modified = parse_int(row.get("total_loc_modified", "0"))
-                is_bug_fix = parse_bool(row.get("is_bug_fix", "False"))
                 is_revert = parse_bool(row.get("is_revert", "False"))
                 commit_date = parse_iso(row.get("date", ""))
 
                 size_class = commit_size_class(files_changed, loc_modified)
                 q1_counts[size_class]["total"] += 1
-                if is_bug_fix:
-                    q1_counts[size_class]["bug_fix"] += 1
+                q1_locs[size_class].append(loc_modified)
+                
+                # Check if this commit is a BIC
+                is_bic = (repo_name, commit_sha) in bics
+                if is_bic:
+                    q1_counts[size_class]["bic"] += 1
+                    q1_bic_locs[size_class].append(loc_modified)
 
                 q3_counts[size_class]["total"] += 1
                 if is_revert:
@@ -140,14 +164,16 @@ def process_commits(complexity_keys: set[tuple[str, str]]):
     q1_items = []
     for size in SIZE_ORDER:
         total = q1_counts[size]["total"]
-        bug_fix = q1_counts[size]["bug_fix"]
+        bic_count = q1_counts[size]["bic"]
         q1_items.append(
             {
                 "size": size,
                 "total": total,
-                "bug_fix": bug_fix,
-                "non_bug_fix": total - bug_fix,
-                "bug_fix_rate": safe_rate(bug_fix, total),
+                "bic_count": bic_count,
+                "non_bic_count": total - bic_count,
+                "bic_rate": safe_rate(bic_count, total),
+                "loc_median": safe_median(q1_locs[size]),
+                "loc_median_bic": safe_median(q1_bic_locs[size]),
             }
         )
 
@@ -363,7 +389,8 @@ def process_repos(commit_counts: Counter[str]):
 
 def main() -> None:
     complexity_keys = read_complexity_keys()
-    commit_data = process_commits(complexity_keys)
+    bics = load_bics_from_ma_szz()
+    commit_data = process_commits(complexity_keys, bics)
     pr_data = process_prs()
     complexity_items = process_complexity(commit_data["complexity_lookup"])
     repo_data = process_repos(commit_data["commit_counts"])

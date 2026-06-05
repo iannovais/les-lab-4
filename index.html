@@ -312,25 +312,44 @@
       <span class="ph-badge" style="background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:#5eead4;">RQ1</span>
       <span class="ph-title">Tamanho do commit vs. Ocorrência de bugs</span>
     </div>
-    <p class="ph-hint">Proxy: <code>is_bug_fix</code> via palavras-chave na mensagem do commit. Use o filtro lateral para comparar classes.</p>
+    <p class="ph-hint"><strong>Hipótese:</strong> Commits que introduzem bugs (BICs) tendem a ser maiores em LOC do que os demais. Mudanças volumosas envolvem mais código e mais carga cognitiva, abrindo espaço para efeitos colaterais.</p>
 
     <div class="krow" id="kpi-rq1"></div>
 
-    <div class="cg cg3">
+    <div class="cg cg2" style="margin-bottom:12px;">
       <div class="cc">
-        <div class="cc-t">Volume por classe</div>
-        <div class="cc-sub">Distribuição total de commits</div>
-        <div class="cw h220"><canvas id="c-q1-dist"></canvas></div>
+        <div class="cc-t">Taxa de BIC por classe</div>
+        <div class="cc-sub">% de commits que introduzem bugs (MA-SZZ)</div>
+        <div class="cw h220"><canvas id="c-q1-bic-rate"></canvas></div>
       </div>
       <div class="cc">
-        <div class="cc-t">Bug fix vs. Non-bug fix</div>
-        <div class="cc-sub">Stacked por classe de tamanho</div>
-        <div class="cw h220"><canvas id="c-q1-stack"></canvas></div>
+        <div class="cc-t">BIC vs. Normal — volume</div>
+        <div class="cc-sub">Count de commits por status (stacked)</div>
+        <div class="cw h220"><canvas id="c-q1-bic-dist"></canvas></div>
       </div>
-      <div class="cc">
-        <div class="cc-t">Taxa de bug fix (%)</div>
-        <div class="cc-sub">Commits de correção / total</div>
-        <div class="cw h220"><canvas id="c-q1-rate"></canvas></div>
+    </div>
+
+    <div class="cg cg1">
+      <div class="cc s2">
+        <div class="cc-t">LOC mediano: BIC vs. Normais</div>
+        <div class="cc-sub">Linhas de código alteradas por tipo de commit (M1.1 — proxy do tamanho)</div>
+        <div class="cw h200"><canvas id="c-q1-loc-comparison"></canvas></div>
+      </div>
+    </div>
+
+    <div class="cg cg1">
+      <div class="cc s2">
+        <div class="cc-t">Burden e Impacto</div>
+        <div class="cc-sub">Radius proporcional ao LOC; X=classe; Y=BIC rate; cor=tamanho</div>
+        <div class="cw h220"><canvas id="c-q1-bubble"></canvas></div>
+      </div>
+    </div>
+
+    <div class="cg cg1">
+      <div class="cc s2">
+        <div class="cc-t">Distribuição de BICs no total</div>
+        <div class="cc-sub">% do total de commits que introduzem bugs (BICs) por classe de tamanho</div>
+        <div class="cw h220"><canvas id="c-q1-bic-share"></canvas></div>
       </div>
     </div>
   </div>
@@ -523,6 +542,29 @@ function mkArea(id, labels, datasets, opts) {
   });
 }
 
+function mkBubble(id, datasets, opts) {
+  opts = opts || {};
+  destroy(id);
+  var el = document.getElementById(id);
+  if (!el) return;
+  CI[id] = new Chart(el.getContext('2d'), {
+    type: 'bubble',
+    data: { datasets: datasets },
+    options: {
+      maintainAspectRatio: false,
+      animation: { duration: 0 },
+      plugins: {
+        legend: { display: true, labels: { color:'#94a3b8', font:{ size:11 }, boxWidth:10, padding:10 } },
+        tooltip: opts.tip ? { callbacks: { label: opts.tip } } : {}
+      },
+      scales: {
+        x: { ticks:TICK, grid:GRID, border:BDR, ...(opts.sx||{}) },
+        y: { ticks:TICK, grid:GRID, border:BDR, ...(opts.sy||{}) }
+      }
+    }
+  });
+}
+
 /* ===================== OVERVIEW ===================== */
 function renderOverview() {
   var d = RAW.dataset;
@@ -616,25 +658,60 @@ function renderRQ1() {
   var lbl = f.map(function(i){ return S_LBL[i.size]; });
   var clr = f.map(function(i){ return S_CLR[i.size]; });
 
+  // KPI: Taxa de BIC por tamanho + LOC mediano
   document.getElementById('kpi-rq1').innerHTML = f.map(function(i) {
     return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
-      '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.bug_fix_rate)+'</div>' +
-      '<div class="l">Bug fix · '+S_LBL[i.size]+'</div>' +
-      '<div class="s">'+fmtK(i.total)+' commits</div>' +
+      '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.bic_rate)+'</div>' +
+      '<div class="l">BICs · '+S_LBL[i.size]+'</div>' +
+      '<div class="s">'+fmtK(i.bic_count)+' de '+fmtK(i.total)+' | LOC: '+i.loc_median_bic+'</div>' +
       '</div>';
   }).join('');
 
-  mkDoughnut('c-q1-dist', lbl, f.map(function(i){ return i.total; }), clr);
-
-  mkBar('c-q1-stack', lbl, [
-    { label:'Bug Fix',     data: f.map(function(i){ return i.bug_fix; }),     backgroundColor: clr,  borderRadius:5 },
-    { label:'Non-Bug Fix', data: f.map(function(i){ return i.non_bug_fix; }), backgroundColor: f.map(function(i){ return S_BG2[i.size]; }), borderRadius:5 }
-  ], { sc: { x:{ stacked:true }, y:{ stacked:true } } });
-
-  mkBar('c-q1-rate', lbl,
-    [{ data: f.map(function(i){ return parseFloat((i.bug_fix_rate*100).toFixed(2)); }), backgroundColor: clr, borderRadius:5 }],
+  // Gráfico 1: Taxa de BIC por classe (simples e claro)
+  mkBar('c-q1-bic-rate', lbl,
+    [{ data: f.map(function(i){ return parseFloat((i.bic_rate*100).toFixed(2)); }), backgroundColor: clr, borderRadius:5 }],
     { tip: function(ctx){ return ctx.parsed.y.toFixed(2)+'%'; } }
   );
+
+  // Gráfico 2: Stacked - BIC vs Normal
+  mkBar('c-q1-bic-dist', lbl, [
+    { label:'BIC (Bug-Introducing)',  data: f.map(function(i){ return i.bic_count; }),     backgroundColor: f.map(function(i){ return S_CLR[i.size]; }), borderRadius:5 },
+    { label:'Normal',                 data: f.map(function(i){ return i.non_bic_count; }), backgroundColor: f.map(function(i){ return S_BG2[i.size]; }), borderRadius:5 }
+  ], { sc: { x:{ stacked:true }, y:{ stacked:true } } });
+
+  // Gráfico 3: LOC mediano comparação (BIC vs Normal)
+  mkBar('c-q1-loc-comparison', lbl, [
+    { label:'BIC Commits', data: f.map(function(i){ return i.loc_median_bic; }), backgroundColor: f.map(function(i){ return S_CLR[i.size]; }), borderRadius:5 },
+    { label:'All Commits',  data: f.map(function(i){ return i.loc_median; }), backgroundColor: f.map(function(i){ return S_BG2[i.size]; }), borderRadius:5 }
+  ]);
+
+  // Gráfico 4: Bubble chart - LOC vs BIC Rate
+  mkBubble('c-q1-bubble', [
+    {
+      label: 'Bug-Introducing Commits',
+      data: f.map(function(i, idx){
+        return {
+          x: idx,
+          y: parseFloat((i.bic_rate*100).toFixed(2)),
+          r: Math.sqrt(i.loc_median_bic) / 2
+        };
+      }),
+      backgroundColor: clr,
+      borderColor: clr,
+      borderWidth: 1
+    }
+  ], { 
+    tip: function(ctx){ 
+      var item = f[ctx.dataIndex];
+      return S_LBL[item.size] + ' — BIC: '+pct(item.bic_rate)+' | LOC: '+item.loc_median_bic;
+    },
+    sx: { ticks: { callback: function(i){ return lbl[i] || ''; } } }
+  });
+
+  // Gráfico 5: Doughnut - proporção de BICs totais por classe
+  var totalBics = f.reduce(function(acc, i){ return acc + i.bic_count; }, 0);
+  var bic_vals = f.map(function(i){ return i.bic_count; });
+  mkDoughnut('c-q1-bic-share', lbl, bic_vals, clr);
 }
 
 /* ===================== RQ2 ===================== */

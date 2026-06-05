@@ -3175,23 +3175,29 @@
       {
         "size": "small",
         "total": 250776,
-        "bug_fix": 90338,
-        "non_bug_fix": 160438,
-        "bug_fix_rate": 0.3602
+        "bic_count": 1601,
+        "non_bic_count": 249175,
+        "bic_rate": 0.0064,
+        "loc_median": 6.0,
+        "loc_median_bic": 11
       },
       {
         "size": "medium",
         "total": 224488,
-        "bug_fix": 78556,
-        "non_bug_fix": 145932,
-        "bug_fix_rate": 0.3499
+        "bic_count": 5649,
+        "non_bic_count": 218839,
+        "bic_rate": 0.0252,
+        "loc_median": 82.0,
+        "loc_median_bic": 117
       },
       {
         "size": "large",
         "total": 75463,
-        "bug_fix": 23370,
-        "non_bug_fix": 52093,
-        "bug_fix_rate": 0.3097
+        "bic_count": 4257,
+        "non_bic_count": 71206,
+        "bic_rate": 0.0564,
+        "loc_median": 632,
+        "loc_median_bic": 955
       }
     ]
   },
