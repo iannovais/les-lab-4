@@ -76,43 +76,3075 @@
     "top_repos_by_commits": [
       {
         "repo": "SimplifyJobs/Summer2026-Internships",
-        "commits": 28547
+        "commits": 28547,
+        "stars": 44665,
+        "contributors": 894,
+        "commits_5_years": 45983
       },
       {
         "repo": "PostHog/posthog",
-        "commits": 19470
+        "commits": 19470,
+        "stars": 34660,
+        "contributors": 486,
+        "commits_5_years": 38923
       },
       {
         "repo": "getsentry/sentry",
-        "commits": 18800
+        "commits": 18800,
+        "stars": 43953,
+        "contributors": 1050,
+        "commits_5_years": 67779
       },
       {
         "repo": "BerriAI/litellm",
-        "commits": 17179
+        "commits": 17179,
+        "stars": 48029,
+        "contributors": 1526,
+        "commits_5_years": 39380
       },
       {
         "repo": "pytorch/pytorch",
-        "commits": 16821
+        "commits": 16821,
+        "stars": 100141,
+        "contributors": 6571,
+        "commits_5_years": 67869
       },
       {
         "repo": "home-assistant/core",
-        "commits": 15488
+        "commits": 15488,
+        "stars": 87198,
+        "contributors": 5447,
+        "commits_5_years": 73960
       },
       {
         "repo": "airbytehq/airbyte",
-        "commits": 13156
+        "commits": 13156,
+        "stars": 21315,
+        "contributors": 1202,
+        "commits_5_years": 44674
       },
       {
         "repo": "odoo/odoo",
-        "commits": 12024
+        "commits": 12024,
+        "stars": 51476,
+        "contributors": 4087,
+        "commits_5_years": 52674
       },
       {
         "repo": "DrewThomasson/ebook2audiobook",
-        "commits": 11810
+        "commits": 11810,
+        "stars": 19010,
+        "contributors": 35,
+        "commits_5_years": 14077
       },
       {
         "repo": "harvard-edge/cs249r_book",
-        "commits": 11263
+        "commits": 11263,
+        "stars": 24245,
+        "contributors": 112,
+        "commits_5_years": 15677
+      }
+    ],
+    "all_repos": [
+      {
+        "repo": "public-apis/public-apis",
+        "stars": 436823,
+        "contributors": 1441,
+        "commits_5_years": 1793
+      },
+      {
+        "repo": "EbookFoundation/free-programming-books",
+        "stars": 388835,
+        "contributors": 3495,
+        "commits_5_years": 3920
+      },
+      {
+        "repo": "vinta/awesome-python",
+        "stars": 299247,
+        "contributors": 542,
+        "commits_5_years": 835
+      },
+      {
+        "repo": "TheAlgorithms/Python",
+        "stars": 221341,
+        "contributors": 1330,
+        "commits_5_years": 1554
+      },
+      {
+        "repo": "Significant-Gravitas/AutoGPT",
+        "stars": 184481,
+        "contributors": 819,
+        "commits_5_years": 8606
+      },
+      {
+        "repo": "yt-dlp/yt-dlp",
+        "stars": 164947,
+        "contributors": 1729,
+        "commits_5_years": 4878
+      },
+      {
+        "repo": "NousResearch/hermes-agent",
+        "stars": 164441,
+        "contributors": 1289,
+        "commits_5_years": 9291
+      },
+      {
+        "repo": "AUTOMATIC1111/stable-diffusion-webui",
+        "stars": 163242,
+        "contributors": 639,
+        "commits_5_years": 7689
+      },
+      {
+        "repo": "huggingface/transformers",
+        "stars": 160907,
+        "contributors": 3943,
+        "commits_5_years": 15682
+      },
+      {
+        "repo": "521xueweihan/HelloGitHub",
+        "stars": 158282,
+        "contributors": 11,
+        "commits_5_years": 117
+      },
+      {
+        "repo": "langflow-ai/langflow",
+        "stars": 148693,
+        "contributors": 342,
+        "commits_5_years": 17702
+      },
+      {
+        "repo": "ytdl-org/youtube-dl",
+        "stars": 140357,
+        "contributors": 1011,
+        "commits_5_years": 517
+      },
+      {
+        "repo": "open-webui/open-webui",
+        "stars": 138375,
+        "contributors": 826,
+        "commits_5_years": 16562
+      },
+      {
+        "repo": "langchain-ai/langchain",
+        "stars": 137486,
+        "contributors": 3686,
+        "commits_5_years": 16045
+      },
+      {
+        "repo": "microsoft/markitdown",
+        "stars": 124839,
+        "contributors": 80,
+        "commits_5_years": 308
+      },
+      {
+        "repo": "Comfy-Org/ComfyUI",
+        "stars": 114196,
+        "contributors": 315,
+        "commits_5_years": 5293
+      },
+      {
+        "repo": "Shubhamsaboo/awesome-llm-apps",
+        "stars": 111581,
+        "contributors": 82,
+        "commits_5_years": 1005
+      },
+      {
+        "repo": "github/spec-kit",
+        "stars": 105311,
+        "contributors": 202,
+        "commits_5_years": 993
+      },
+      {
+        "repo": "openai/whisper",
+        "stars": 100303,
+        "contributors": 81,
+        "commits_5_years": 168
+      },
+      {
+        "repo": "pytorch/pytorch",
+        "stars": 100141,
+        "contributors": 6571,
+        "commits_5_years": 67869
+      },
+      {
+        "repo": "fastapi/fastapi",
+        "stars": 98467,
+        "contributors": 896,
+        "commits_5_years": 5610
+      },
+      {
+        "repo": "browser-use/browser-use",
+        "stars": 95237,
+        "contributors": 334,
+        "commits_5_years": 9281
+      },
+      {
+        "repo": "hacksider/Deep-Live-Cam",
+        "stars": 93312,
+        "contributors": 72,
+        "commits_5_years": 611
+      },
+      {
+        "repo": "django/django",
+        "stars": 87565,
+        "contributors": 3442,
+        "commits_5_years": 5007
+      },
+      {
+        "repo": "home-assistant/core",
+        "stars": 87198,
+        "contributors": 5447,
+        "commits_5_years": 73960
+      },
+      {
+        "repo": "3b1b/manim",
+        "stars": 87081,
+        "contributors": 198,
+        "commits_5_years": 2358
+      },
+      {
+        "repo": "sherlock-project/sherlock",
+        "stars": 83624,
+        "contributors": 313,
+        "commits_5_years": 1407
+      },
+      {
+        "repo": "bregman-arie/devops-exercises",
+        "stars": 82464,
+        "contributors": 220,
+        "commits_5_years": 336
+      },
+      {
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+        "stars": 81998,
+        "contributors": 31,
+        "commits_5_years": 134
+      },
+      {
+        "repo": "infiniflow/ragflow",
+        "stars": 81097,
+        "contributors": 604,
+        "commits_5_years": 6357
+      },
+      {
+        "repo": "vllm-project/vllm",
+        "stars": 80816,
+        "contributors": 2698,
+        "commits_5_years": 16915
+      },
+      {
+        "repo": "TauricResearch/TradingAgents",
+        "stars": 78918,
+        "contributors": 20,
+        "commits_5_years": 190
+      },
+      {
+        "repo": "PaddlePaddle/PaddleOCR",
+        "stars": 78421,
+        "contributors": 293,
+        "commits_5_years": 4699
+      },
+      {
+        "repo": "swisskyrepo/PayloadsAllTheThings",
+        "stars": 77896,
+        "contributors": 321,
+        "commits_5_years": 1127
+      },
+      {
+        "repo": "tensorflow/models",
+        "stars": 77663,
+        "contributors": 957,
+        "commits_5_years": 2893
+      },
+      {
+        "repo": "Z4nzu/hackingtool",
+        "stars": 76316,
+        "contributors": 40,
+        "commits_5_years": 170
+      },
+      {
+        "repo": "OpenHands/OpenHands",
+        "stars": 74657,
+        "contributors": 474,
+        "commits_5_years": 6784
+      },
+      {
+        "repo": "python/cpython",
+        "stars": 72873,
+        "contributors": 3833,
+        "commits_5_years": 21465
+      },
+      {
+        "repo": "josephmisiti/awesome-machine-learning",
+        "stars": 72551,
+        "contributors": 725,
+        "commits_5_years": 531
+      },
+      {
+        "repo": "pallets/flask",
+        "stars": 71572,
+        "contributors": 862,
+        "commits_5_years": 1218
+      },
+      {
+        "repo": "hiyouga/LlamaFactory",
+        "stars": 71530,
+        "contributors": 273,
+        "commits_5_years": 3030
+      },
+      {
+        "repo": "binary-husky/gpt_academic",
+        "stars": 70719,
+        "contributors": 114,
+        "commits_5_years": 2403
+      },
+      {
+        "repo": "bytedance/deer-flow",
+        "stars": 69317,
+        "contributors": 254,
+        "commits_5_years": 2157
+      },
+      {
+        "repo": "ansible/ansible",
+        "stars": 68684,
+        "contributors": 6939,
+        "commits_5_years": 3867
+      },
+      {
+        "repo": "FoundationAgents/MetaGPT",
+        "stars": 68239,
+        "contributors": 148,
+        "commits_5_years": 6367
+      },
+      {
+        "repo": "OpenBB-finance/OpenBB",
+        "stars": 67993,
+        "contributors": 268,
+        "commits_5_years": 4908
+      },
+      {
+        "repo": "labmlai/annotated_deep_learning_paper_implementations",
+        "stars": 66801,
+        "contributors": 42,
+        "commits_5_years": 457
+      },
+      {
+        "repo": "xtekky/gpt4free",
+        "stars": 66275,
+        "contributors": 275,
+        "commits_5_years": 4280
+      },
+      {
+        "repo": "scikit-learn/scikit-learn",
+        "stars": 66167,
+        "contributors": 3513,
+        "commits_5_years": 6900
+      },
+      {
+        "repo": "unclecode/crawl4ai",
+        "stars": 66135,
+        "contributors": 79,
+        "commits_5_years": 1468
+      },
+      {
+        "repo": "unslothai/unsloth",
+        "stars": 65031,
+        "contributors": 184,
+        "commits_5_years": 5390
+      },
+      {
+        "repo": "localstack/localstack",
+        "stars": 64973,
+        "contributors": 657,
+        "commits_5_years": 5846
+      },
+      {
+        "repo": "opendatalab/MinerU",
+        "stars": 64631,
+        "contributors": 98,
+        "commits_5_years": 5467
+      },
+      {
+        "repo": "keras-team/keras",
+        "stars": 64087,
+        "contributors": 1518,
+        "commits_5_years": 6914
+      },
+      {
+        "repo": "openinterpreter/open-interpreter",
+        "stars": 63642,
+        "contributors": 133,
+        "commits_5_years": 3120
+      },
+      {
+        "repo": "pathwaycom/pathway",
+        "stars": 63252,
+        "contributors": 40,
+        "commits_5_years": 1973
+      },
+      {
+        "repo": "Asabeneh/30-Days-Of-Python",
+        "stars": 63038,
+        "contributors": 84,
+        "commits_5_years": 393
+      },
+      {
+        "repo": "scrapy/scrapy",
+        "stars": 61794,
+        "contributors": 714,
+        "commits_5_years": 2135
+      },
+      {
+        "repo": "commaai/openpilot",
+        "stars": 61018,
+        "contributors": 722,
+        "commits_5_years": 12963
+      },
+      {
+        "repo": "docling-project/docling",
+        "stars": 60257,
+        "contributors": 225,
+        "commits_5_years": 1053
+      },
+      {
+        "repo": "virattt/ai-hedge-fund",
+        "stars": 59162,
+        "contributors": 45,
+        "commits_5_years": 842
+      },
+      {
+        "repo": "karpathy/nanoGPT",
+        "stars": 58668,
+        "contributors": 37,
+        "commits_5_years": 210
+      },
+      {
+        "repo": "microsoft/autogen",
+        "stars": 58323,
+        "contributors": 533,
+        "commits_5_years": 3718
+      },
+      {
+        "repo": "RVC-Boss/GPT-SoVITS",
+        "stars": 57708,
+        "contributors": 100,
+        "commits_5_years": 1044
+      },
+      {
+        "repo": "harry0703/MoneyPrinterTurbo",
+        "stars": 57663,
+        "contributors": 46,
+        "commits_5_years": 544
+      },
+      {
+        "repo": "ultralytics/ultralytics",
+        "stars": 57490,
+        "contributors": 359,
+        "commits_5_years": 4005
+      },
+      {
+        "repo": "ultralytics/yolov5",
+        "stars": 57421,
+        "contributors": 347,
+        "commits_5_years": 1829
+      },
+      {
+        "repo": "zylon-ai/private-gpt",
+        "stars": 57215,
+        "contributors": 94,
+        "commits_5_years": 334
+      },
+      {
+        "repo": "soimort/you-get",
+        "stars": 56857,
+        "contributors": 264,
+        "commits_5_years": 221
+      },
+      {
+        "repo": "mem0ai/mem0",
+        "stars": 56537,
+        "contributors": 313,
+        "commits_5_years": 2202
+      },
+      {
+        "repo": "Textualize/rich",
+        "stars": 56425,
+        "contributors": 289,
+        "commits_5_years": 2488
+      },
+      {
+        "repo": "FoundationAgents/OpenManus",
+        "stars": 56356,
+        "contributors": 60,
+        "commits_5_years": 526
+      },
+      {
+        "repo": "deepfakes/faceswap",
+        "stars": 55237,
+        "contributors": 98,
+        "commits_5_years": 530
+      },
+      {
+        "repo": "Zie619/n8n-workflows",
+        "stars": 54681,
+        "contributors": 38,
+        "commits_5_years": 151
+      },
+      {
+        "repo": "karpathy/nanochat",
+        "stars": 54066,
+        "contributors": 55,
+        "commits_5_years": 381
+      },
+      {
+        "repo": "psf/requests",
+        "stars": 54011,
+        "contributors": 793,
+        "commits_5_years": 438
+      },
+      {
+        "repo": "D4Vinci/Scrapling",
+        "stars": 53683,
+        "contributors": 17,
+        "commits_5_years": 1442
+      },
+      {
+        "repo": "MemPalace/mempalace",
+        "stars": 52717,
+        "contributors": 90,
+        "commits_5_years": 1078
+      },
+      {
+        "repo": "datawhalechina/hello-agents",
+        "stars": 52642,
+        "contributors": 85,
+        "commits_5_years": 791
+      },
+      {
+        "repo": "safishamsi/graphify",
+        "stars": 52484,
+        "contributors": 51,
+        "commits_5_years": 529
+      },
+      {
+        "repo": "crewAIInc/crewAI",
+        "stars": 52033,
+        "contributors": 299,
+        "commits_5_years": 2433
+      },
+      {
+        "repo": "odoo/odoo",
+        "stars": 51476,
+        "contributors": 4087,
+        "commits_5_years": 52674
+      },
+      {
+        "repo": "charlax/professional-programming",
+        "stars": 51007,
+        "contributors": 41,
+        "commits_5_years": 214
+      },
+      {
+        "repo": "freqtrade/freqtrade",
+        "stars": 50674,
+        "contributors": 388,
+        "commits_5_years": 19979
+      },
+      {
+        "repo": "jingyaogong/minimind",
+        "stars": 50459,
+        "contributors": 11,
+        "commits_5_years": 353
+      },
+      {
+        "repo": "NanmiCoder/MediaCrawler",
+        "stars": 50067,
+        "contributors": 76,
+        "commits_5_years": 761
+      },
+      {
+        "repo": "run-llama/llama_index",
+        "stars": 49618,
+        "contributors": 1939,
+        "commits_5_years": 7807
+      },
+      {
+        "repo": "lllyasviel/Fooocus",
+        "stars": 48850,
+        "contributors": 59,
+        "commits_5_years": 1144
+      },
+      {
+        "repo": "pandas-dev/pandas",
+        "stars": 48832,
+        "contributors": 4210,
+        "commits_5_years": 11164
+      },
+      {
+        "repo": "BerriAI/litellm",
+        "stars": 48029,
+        "contributors": 1526,
+        "commits_5_years": 39380
+      },
+      {
+        "repo": "microsoft/VibeVoice",
+        "stars": 47384,
+        "contributors": 20,
+        "commits_5_years": 135
+      },
+      {
+        "repo": "oobabooga/textgen",
+        "stars": 47205,
+        "contributors": 393,
+        "commits_5_years": 5749
+      },
+      {
+        "repo": "apache/airflow",
+        "stars": 45510,
+        "contributors": 4384,
+        "commits_5_years": 25986
+      },
+      {
+        "repo": "Aider-AI/aider",
+        "stars": 45213,
+        "contributors": 182,
+        "commits_5_years": 13138
+      },
+      {
+        "repo": "9001/copyparty",
+        "stars": 44968,
+        "contributors": 114,
+        "commits_5_years": 4006
+      },
+      {
+        "repo": "exo-explore/exo",
+        "stars": 44881,
+        "contributors": 105,
+        "commits_5_years": 2344
+      },
+      {
+        "repo": "zhayujie/CowAgent",
+        "stars": 44751,
+        "contributors": 115,
+        "commits_5_years": 1898
+      },
+      {
+        "repo": "streamlit/streamlit",
+        "stars": 44692,
+        "contributors": 329,
+        "commits_5_years": 5637
+      },
+      {
+        "repo": "SimplifyJobs/Summer2026-Internships",
+        "stars": 44665,
+        "contributors": 894,
+        "commits_5_years": 45983
+      },
+      {
+        "repo": "hesreallyhim/awesome-claude-code",
+        "stars": 44622,
+        "contributors": 16,
+        "commits_5_years": 1157
+      },
+      {
+        "repo": "hiroi-sora/Umi-OCR",
+        "stars": 44438,
+        "contributors": 17,
+        "commits_5_years": 1267
+      },
+      {
+        "repo": "getsentry/sentry",
+        "stars": 43953,
+        "contributors": 1050,
+        "commits_5_years": 67779
+      },
+      {
+        "repo": "mitmproxy/mitmproxy",
+        "stars": 43657,
+        "contributors": 604,
+        "commits_5_years": 1866
+      },
+      {
+        "repo": "microsoft/qlib",
+        "stars": 43390,
+        "contributors": 151,
+        "commits_5_years": 995
+      },
+      {
+        "repo": "HKUDS/nanobot",
+        "stars": 43047,
+        "contributors": 331,
+        "commits_5_years": 2640
+      },
+      {
+        "repo": "faif/python-patterns",
+        "stars": 42757,
+        "contributors": 150,
+        "commits_5_years": 116
+      },
+      {
+        "repo": "gradio-app/gradio",
+        "stars": 42670,
+        "contributors": 499,
+        "commits_5_years": 6427
+      },
+      {
+        "repo": "ray-project/ray",
+        "stars": 42641,
+        "contributors": 1582,
+        "commits_5_years": 22317
+      },
+      {
+        "repo": "ccxt/ccxt",
+        "stars": 42574,
+        "contributors": 893,
+        "commits_5_years": 53233
+      },
+      {
+        "repo": "deepspeedai/DeepSpeed",
+        "stars": 42390,
+        "contributors": 465,
+        "commits_5_years": 2579
+      },
+      {
+        "repo": "mingrammer/diagrams",
+        "stars": 42297,
+        "contributors": 177,
+        "commits_5_years": 247
+      },
+      {
+        "repo": "psf/black",
+        "stars": 41520,
+        "contributors": 525,
+        "commits_5_years": 1216
+      },
+      {
+        "repo": "hpcaitech/ColossalAI",
+        "stars": 41392,
+        "contributors": 199,
+        "commits_5_years": 3977
+      },
+      {
+        "repo": "666ghj/BettaFish",
+        "stars": 41019,
+        "contributors": 43,
+        "commits_5_years": 1000
+      },
+      {
+        "repo": "paperless-ngx/paperless-ngx",
+        "stars": 40933,
+        "contributors": 437,
+        "commits_5_years": 7445
+      },
+      {
+        "repo": "vnpy/vnpy",
+        "stars": 40860,
+        "contributors": 154,
+        "commits_5_years": 1077
+      },
+      {
+        "repo": "agno-agi/agno",
+        "stars": 40315,
+        "contributors": 444,
+        "commits_5_years": 5603
+      },
+      {
+        "repo": "HKUDS/CLI-Anything",
+        "stars": 39807,
+        "contributors": 100,
+        "commits_5_years": 688
+      },
+      {
+        "repo": "roboflow/supervision",
+        "stars": 39518,
+        "contributors": 154,
+        "commits_5_years": 4866
+      },
+      {
+        "repo": "lm-sys/FastChat",
+        "stars": 39480,
+        "contributors": 246,
+        "commits_5_years": 890
+      },
+      {
+        "repo": "2noise/ChatTTS",
+        "stars": 39306,
+        "contributors": 59,
+        "commits_5_years": 434
+      },
+      {
+        "repo": "mindsdb/minds-platform",
+        "stars": 39204,
+        "contributors": 908,
+        "commits_5_years": 17111
+      },
+      {
+        "repo": "QuivrHQ/quivr",
+        "stars": 39157,
+        "contributors": 119,
+        "commits_5_years": 2295
+      },
+      {
+        "repo": "ManimCommunity/manim",
+        "stars": 38604,
+        "contributors": 493,
+        "commits_5_years": 1256
+      },
+      {
+        "repo": "ZhuLinsen/daily_stock_analysis",
+        "stars": 38593,
+        "contributors": 75,
+        "commits_5_years": 668
+      },
+      {
+        "repo": "sickn33/antigravity-awesome-skills",
+        "stars": 38483,
+        "contributors": 215,
+        "commits_5_years": 1720
+      },
+      {
+        "repo": "gto76/python-cheatsheet",
+        "stars": 38417,
+        "contributors": 14,
+        "commits_5_years": 796
+      },
+      {
+        "repo": "chatchat-space/Langchain-Chatchat",
+        "stars": 38070,
+        "contributors": 173,
+        "commits_5_years": 2471
+      },
+      {
+        "repo": "sqlmapproject/sqlmap",
+        "stars": 37461,
+        "contributors": 154,
+        "commits_5_years": 775
+      },
+      {
+        "repo": "openai/gym",
+        "stars": 37212,
+        "contributors": 385,
+        "commits_5_years": 513
+      },
+      {
+        "repo": "satwikkansal/wtfpython",
+        "stars": 36953,
+        "contributors": 82,
+        "commits_5_years": 190
+      },
+      {
+        "repo": "babysor/MockingBird",
+        "stars": 36901,
+        "contributors": 41,
+        "commits_5_years": 215
+      },
+      {
+        "repo": "huggingface/pytorch-image-models",
+        "stars": 36822,
+        "contributors": 193,
+        "commits_5_years": 2184
+      },
+      {
+        "repo": "google/langextract",
+        "stars": 36532,
+        "contributors": 23,
+        "commits_5_years": 163
+      },
+      {
+        "repo": "hankcs/HanLP",
+        "stars": 36318,
+        "contributors": 46,
+        "commits_5_years": 285
+      },
+      {
+        "repo": "Textualize/textual",
+        "stars": 36004,
+        "contributors": 191,
+        "commits_5_years": 13081
+      },
+      {
+        "repo": "wshobson/agents",
+        "stars": 35842,
+        "contributors": 62,
+        "commits_5_years": 394
+      },
+      {
+        "repo": "jax-ml/jax",
+        "stars": 35680,
+        "contributors": 1070,
+        "commits_5_years": 27938
+      },
+      {
+        "repo": "HKUDS/LightRAG",
+        "stars": 35626,
+        "contributors": 280,
+        "commits_5_years": 7853
+      },
+      {
+        "repo": "datalab-to/marker",
+        "stars": 35368,
+        "contributors": 29,
+        "commits_5_years": 1359
+      },
+      {
+        "repo": "geekcomputers/Python",
+        "stars": 35031,
+        "contributors": 847,
+        "commits_5_years": 2803
+      },
+      {
+        "repo": "frappe/erpnext",
+        "stars": 34920,
+        "contributors": 917,
+        "commits_5_years": 21756
+      },
+      {
+        "repo": "khoj-ai/khoj",
+        "stars": 34674,
+        "contributors": 71,
+        "commits_5_years": 5167
+      },
+      {
+        "repo": "PostHog/posthog",
+        "stars": 34660,
+        "contributors": 486,
+        "commits_5_years": 38923
+      },
+      {
+        "repo": "stanfordnlp/dspy",
+        "stars": 34604,
+        "contributors": 427,
+        "commits_5_years": 4524
+      },
+      {
+        "repo": "facebookresearch/detectron2",
+        "stars": 34493,
+        "contributors": 285,
+        "commits_5_years": 414
+      },
+      {
+        "repo": "python-poetry/poetry",
+        "stars": 34290,
+        "contributors": 655,
+        "commits_5_years": 1994
+      },
+      {
+        "repo": "PDFMathTranslate/PDFMathTranslate",
+        "stars": 33965,
+        "contributors": 57,
+        "commits_5_years": 1144
+      },
+      {
+        "repo": "luongnv89/claude-howto",
+        "stars": 33955,
+        "contributors": 20,
+        "commits_5_years": 212
+      },
+      {
+        "repo": "Pythagora-io/gpt-pilot",
+        "stars": 33771,
+        "contributors": 63,
+        "commits_5_years": 2884
+      },
+      {
+        "repo": "github/awesome-copilot",
+        "stars": 33700,
+        "contributors": 386,
+        "commits_5_years": 1752
+      },
+      {
+        "repo": "ocrmypdf/OCRmyPDF",
+        "stars": 33692,
+        "contributors": 121,
+        "commits_5_years": 1368
+      },
+      {
+        "repo": "huggingface/diffusers",
+        "stars": 33685,
+        "contributors": 1108,
+        "commits_5_years": 6519
+      },
+      {
+        "repo": "explosion/spaCy",
+        "stars": 33605,
+        "contributors": 780,
+        "commits_5_years": 1684
+      },
+      {
+        "repo": "XX-net/XX-Net",
+        "stars": 33460,
+        "contributors": 95,
+        "commits_5_years": 379
+      },
+      {
+        "repo": "microsoft/graphrag",
+        "stars": 33183,
+        "contributors": 51,
+        "commits_5_years": 465
+      },
+      {
+        "repo": "OpenBMB/ChatDev",
+        "stars": 33168,
+        "contributors": 16,
+        "commits_5_years": 190
+      },
+      {
+        "repo": "kovidgoyal/kitty",
+        "stars": 33079,
+        "contributors": 442,
+        "commits_5_years": 11298
+      },
+      {
+        "repo": "certbot/certbot",
+        "stars": 33044,
+        "contributors": 550,
+        "commits_5_years": 1175
+      },
+      {
+        "repo": "AstrBotDevs/AstrBot",
+        "stars": 32929,
+        "contributors": 279,
+        "commits_5_years": 4698
+      },
+      {
+        "repo": "langchain-ai/langgraph",
+        "stars": 32779,
+        "contributors": 279,
+        "commits_5_years": 6880
+      },
+      {
+        "repo": "tinygrad/tinygrad",
+        "stars": 32750,
+        "contributors": 473,
+        "commits_5_years": 12876
+      },
+      {
+        "repo": "nicolargo/glances",
+        "stars": 32624,
+        "contributors": 243,
+        "commits_5_years": 3151
+      },
+      {
+        "repo": "0xAX/linux-insides",
+        "stars": 32569,
+        "contributors": 343,
+        "commits_5_years": 245
+      },
+      {
+        "repo": "facebookresearch/fairseq",
+        "stars": 32220,
+        "contributors": 433,
+        "commits_5_years": 431
+      },
+      {
+        "repo": "numpy/numpy",
+        "stars": 32084,
+        "contributors": 2080,
+        "commits_5_years": 14584
+      },
+      {
+        "repo": "OWASP/CheatSheetSeries",
+        "stars": 32077,
+        "contributors": 624,
+        "commits_5_years": 970
+      },
+      {
+        "repo": "VectifyAI/PageIndex",
+        "stars": 32036,
+        "contributors": 11,
+        "commits_5_years": 284
+      },
+      {
+        "repo": "dgtlmoon/changedetection.io",
+        "stars": 31677,
+        "contributors": 134,
+        "commits_5_years": 2115
+      },
+      {
+        "repo": "tqdm/tqdm",
+        "stars": 31167,
+        "contributors": 119,
+        "commits_5_years": 202
+      },
+      {
+        "repo": "Lightning-AI/pytorch-lightning",
+        "stars": 31152,
+        "contributors": 1060,
+        "commits_5_years": 6115
+      },
+      {
+        "repo": "openai/openai-python",
+        "stars": 30826,
+        "contributors": 152,
+        "commits_5_years": 1364
+      },
+      {
+        "repo": "searxng/searxng",
+        "stars": 30555,
+        "contributors": 339,
+        "commits_5_years": 5050
+      },
+      {
+        "repo": "FujiwaraChoki/MoneyPrinterV2",
+        "stars": 30536,
+        "contributors": 11,
+        "commits_5_years": 114
+      },
+      {
+        "repo": "jumpserver/jumpserver",
+        "stars": 30487,
+        "contributors": 179,
+        "commits_5_years": 6763
+      },
+      {
+        "repo": "fishaudio/fish-speech",
+        "stars": 30470,
+        "contributors": 95,
+        "commits_5_years": 729
+      },
+      {
+        "repo": "StevenBlack/hosts",
+        "stars": 30411,
+        "contributors": 172,
+        "commits_5_years": 1845
+      },
+      {
+        "repo": "trailofbits/algo",
+        "stars": 30241,
+        "contributors": 202,
+        "commits_5_years": 260
+      },
+      {
+        "repo": "soxoj/maigret",
+        "stars": 30057,
+        "contributors": 60,
+        "commits_5_years": 1026
+      },
+      {
+        "repo": "encode/django-rest-framework",
+        "stars": 30027,
+        "contributors": 1481,
+        "commits_5_years": 571
+      },
+      {
+        "repo": "onyx-dot-app/onyx",
+        "stars": 29646,
+        "contributors": 192,
+        "commits_5_years": 8115
+      },
+      {
+        "repo": "AtsushiSakai/PythonRobotics",
+        "stars": 29596,
+        "contributors": 147,
+        "commits_5_years": 611
+      },
+      {
+        "repo": "JaidedAI/EasyOCR",
+        "stars": 29505,
+        "contributors": 129,
+        "commits_5_years": 214
+      },
+      {
+        "repo": "python-telegram-bot/python-telegram-bot",
+        "stars": 29163,
+        "contributors": 210,
+        "commits_5_years": 942
+      },
+      {
+        "repo": "hpcaitech/Open-Sora",
+        "stars": 29010,
+        "contributors": 67,
+        "commits_5_years": 1333
+      },
+      {
+        "repo": "Genesis-Embodied-AI/genesis-world",
+        "stars": 28834,
+        "contributors": 89,
+        "commits_5_years": 1414
+      },
+      {
+        "repo": "deepinsight/insightface",
+        "stars": 28784,
+        "contributors": 67,
+        "commits_5_years": 861
+      },
+      {
+        "repo": "Ebazhanov/linkedin-skill-assessments-quizzes",
+        "stars": 28753,
+        "contributors": 1687,
+        "commits_5_years": 5610
+      },
+      {
+        "repo": "521xueweihan/GitHub520",
+        "stars": 28728,
+        "contributors": 18,
+        "commits_5_years": 21742
+      },
+      {
+        "repo": "Alishahryar1/free-claude-code",
+        "stars": 28600,
+        "contributors": 31,
+        "commits_5_years": 653
+      },
+      {
+        "repo": "getredash/redash",
+        "stars": 28590,
+        "contributors": 544,
+        "commits_5_years": 727
+      },
+      {
+        "repo": "celery/celery",
+        "stars": 28522,
+        "contributors": 1507,
+        "commits_5_years": 1491
+      },
+      {
+        "repo": "reflex-dev/reflex",
+        "stars": 28447,
+        "contributors": 203,
+        "commits_5_years": 3117
+      },
+      {
+        "repo": "stanford-oval/storm",
+        "stars": 28254,
+        "contributors": 26,
+        "commits_5_years": 238
+      },
+      {
+        "repo": "sgl-project/sglang",
+        "stars": 28164,
+        "contributors": 1426,
+        "commits_5_years": 13068
+      },
+      {
+        "repo": "pydantic/pydantic",
+        "stars": 27839,
+        "contributors": 761,
+        "commits_5_years": 4439
+      },
+      {
+        "repo": "locustio/locust",
+        "stars": 27814,
+        "contributors": 386,
+        "commits_5_years": 3606
+      },
+      {
+        "repo": "ArchiveBox/ArchiveBox",
+        "stars": 27530,
+        "contributors": 144,
+        "commits_5_years": 2319
+      },
+      {
+        "repo": "davila7/claude-code-templates",
+        "stars": 27511,
+        "contributors": 80,
+        "commits_5_years": 1218
+      },
+      {
+        "repo": "huggingface/smolagents",
+        "stars": 27475,
+        "contributors": 203,
+        "commits_5_years": 1043
+      },
+      {
+        "repo": "assafelovic/gpt-researcher",
+        "stars": 27248,
+        "contributors": 240,
+        "commits_5_years": 2936
+      },
+      {
+        "repo": "QwenLM/Qwen3",
+        "stars": 27246,
+        "contributors": 50,
+        "commits_5_years": 303
+      },
+      {
+        "repo": "hsliuping/TradingAgents-CN",
+        "stars": 27207,
+        "contributors": 19,
+        "commits_5_years": 1225
+      },
+      {
+        "repo": "squidfunk/mkdocs-material",
+        "stars": 26780,
+        "contributors": 333,
+        "commits_5_years": 3397
+      },
+      {
+        "repo": "ungoogled-software/ungoogled-chromium",
+        "stars": 26702,
+        "contributors": 107,
+        "commits_5_years": 525
+      },
+      {
+        "repo": "openai/openai-agents-python",
+        "stars": 26602,
+        "contributors": 276,
+        "commits_5_years": 1583
+      },
+      {
+        "repo": "getzep/graphiti",
+        "stars": 26437,
+        "contributors": 41,
+        "commits_5_years": 831
+      },
+      {
+        "repo": "anthropics/claude-plugins-official",
+        "stars": 26428,
+        "contributors": 32,
+        "commits_5_years": 405
+      },
+      {
+        "repo": "Fosowl/agenticSeek",
+        "stars": 26419,
+        "contributors": 45,
+        "commits_5_years": 944
+      },
+      {
+        "repo": "mvanhorn/last30days-skill",
+        "stars": 26406,
+        "contributors": 48,
+        "commits_5_years": 618
+      },
+      {
+        "repo": "WZMIAOMIAO/deep-learning-for-image-processing",
+        "stars": 26240,
+        "contributors": 7,
+        "commits_5_years": 653
+      },
+      {
+        "repo": "subframe7536/maple-font",
+        "stars": 26117,
+        "contributors": 17,
+        "commits_5_years": 723
+      },
+      {
+        "repo": "walter201230/Python",
+        "stars": 26104,
+        "contributors": 10,
+        "commits_5_years": 119
+      },
+      {
+        "repo": "mlflow/mlflow",
+        "stars": 26077,
+        "contributors": 1057,
+        "commits_5_years": 10268
+      },
+      {
+        "repo": "huggingface/open-r1",
+        "stars": 26022,
+        "contributors": 44,
+        "commits_5_years": 199
+      },
+      {
+        "repo": "ycm-core/YouCompleteMe",
+        "stars": 25909,
+        "contributors": 200,
+        "commits_5_years": 447
+      },
+      {
+        "repo": "ScrapeGraphAI/Scrapegraph-ai",
+        "stars": 25806,
+        "contributors": 119,
+        "commits_5_years": 2875
+      },
+      {
+        "repo": "usestrix/strix",
+        "stars": 25564,
+        "contributors": 37,
+        "commits_5_years": 364
+      },
+      {
+        "repo": "agentscope-ai/agentscope",
+        "stars": 25507,
+        "contributors": 54,
+        "commits_5_years": 276
+      },
+      {
+        "repo": "keon/algorithms",
+        "stars": 25451,
+        "contributors": 221,
+        "commits_5_years": 123
+      },
+      {
+        "repo": "Cinnamon/kotaemon",
+        "stars": 25394,
+        "contributors": 39,
+        "commits_5_years": 326
+      },
+      {
+        "repo": "K-Dense-AI/scientific-agent-skills",
+        "stars": 25361,
+        "contributors": 41,
+        "commits_5_years": 474
+      },
+      {
+        "repo": "zai-org/Open-AutoGLM",
+        "stars": 25351,
+        "contributors": 13,
+        "commits_5_years": 106
+      },
+      {
+        "repo": "PrefectHQ/fastmcp",
+        "stars": 25283,
+        "contributors": 249,
+        "commits_5_years": 3504
+      },
+      {
+        "repo": "zulip/zulip",
+        "stars": 25264,
+        "contributors": 1310,
+        "commits_5_years": 28258
+      },
+      {
+        "repo": "OpenBMB/MiniCPM-V",
+        "stars": 25214,
+        "contributors": 36,
+        "commits_5_years": 674
+      },
+      {
+        "repo": "lucidrains/vit-pytorch",
+        "stars": 25201,
+        "contributors": 27,
+        "commits_5_years": 255
+      },
+      {
+        "repo": "pypa/pipenv",
+        "stars": 25074,
+        "contributors": 542,
+        "commits_5_years": 2542
+      },
+      {
+        "repo": "kovidgoyal/calibre",
+        "stars": 24896,
+        "contributors": 470,
+        "commits_5_years": 10160
+      },
+      {
+        "repo": "cookiecutter/cookiecutter",
+        "stars": 24892,
+        "contributors": 333,
+        "commits_5_years": 420
+      },
+      {
+        "repo": "spotDL/spotify-downloader",
+        "stars": 24884,
+        "contributors": 188,
+        "commits_5_years": 1738
+      },
+      {
+        "repo": "microsoft/JARVIS",
+        "stars": 24757,
+        "contributors": 23,
+        "commits_5_years": 112
+      },
+      {
+        "repo": "volcengine/OpenViking",
+        "stars": 24563,
+        "contributors": 157,
+        "commits_5_years": 1201
+      },
+      {
+        "repo": "oraios/serena",
+        "stars": 24543,
+        "contributors": 181,
+        "commits_5_years": 2898
+      },
+      {
+        "repo": "huggingface/lerobot",
+        "stars": 24269,
+        "contributors": 217,
+        "commits_5_years": 1469
+      },
+      {
+        "repo": "harvard-edge/cs249r_book",
+        "stars": 24245,
+        "contributors": 112,
+        "commits_5_years": 15677
+      },
+      {
+        "repo": "HKUDS/DeepTutor",
+        "stars": 24235,
+        "contributors": 66,
+        "commits_5_years": 750
+      },
+      {
+        "repo": "plotly/dash",
+        "stars": 24209,
+        "contributors": 212,
+        "commits_5_years": 4433
+      },
+      {
+        "repo": "pytorch/examples",
+        "stars": 23903,
+        "contributors": 285,
+        "commits_5_years": 287
+      },
+      {
+        "repo": "Guovin/iptv-api",
+        "stars": 23889,
+        "contributors": 6,
+        "commits_5_years": 2096
+      },
+      {
+        "repo": "Delgan/loguru",
+        "stars": 23886,
+        "contributors": 76,
+        "commits_5_years": 470
+      },
+      {
+        "repo": "Dao-AILab/flash-attention",
+        "stars": 23877,
+        "contributors": 181,
+        "commits_5_years": 1489
+      },
+      {
+        "repo": "ranaroussi/yfinance",
+        "stars": 23787,
+        "contributors": 167,
+        "commits_5_years": 1505
+      },
+      {
+        "repo": "pyg-team/pytorch_geometric",
+        "stars": 23781,
+        "contributors": 566,
+        "commits_5_years": 3402
+      },
+      {
+        "repo": "sinaptik-ai/pandas-ai",
+        "stars": 23549,
+        "contributors": 112,
+        "commits_5_years": 1416
+      },
+      {
+        "repo": "vanna-ai/vanna",
+        "stars": 23494,
+        "contributors": 88,
+        "commits_5_years": 972
+      },
+      {
+        "repo": "deepseek-ai/DeepSeek-Coder",
+        "stars": 23429,
+        "contributors": 17,
+        "commits_5_years": 109
+      },
+      {
+        "repo": "jhao104/proxy_pool",
+        "stars": 23359,
+        "contributors": 64,
+        "commits_5_years": 107
+      },
+      {
+        "repo": "timqian/chinese-independent-blogs",
+        "stars": 23255,
+        "contributors": 1455,
+        "commits_5_years": 2555
+      },
+      {
+        "repo": "langchain-ai/deepagents",
+        "stars": 23239,
+        "contributors": 118,
+        "commits_5_years": 1958
+      },
+      {
+        "repo": "Fincept-Corporation/FinceptTerminal",
+        "stars": 23109,
+        "contributors": 36,
+        "commits_5_years": 952
+      },
+      {
+        "repo": "modelcontextprotocol/python-sdk",
+        "stars": 23103,
+        "contributors": 185,
+        "commits_5_years": 856
+      },
+      {
+        "repo": "SYSTRAN/faster-whisper",
+        "stars": 23100,
+        "contributors": 47,
+        "commits_5_years": 263
+      },
+      {
+        "repo": "Vonng/ddia",
+        "stars": 23059,
+        "contributors": 127,
+        "commits_5_years": 716
+      },
+      {
+        "repo": "danielgatis/rembg",
+        "stars": 23057,
+        "contributors": 82,
+        "commits_5_years": 455
+      },
+      {
+        "repo": "saleor/saleor",
+        "stars": 22921,
+        "contributors": 323,
+        "commits_5_years": 3928
+      },
+      {
+        "repo": "letta-ai/letta",
+        "stars": 22916,
+        "contributors": 153,
+        "commits_5_years": 7464
+      },
+      {
+        "repo": "SuperClaude-Org/SuperClaude_Framework",
+        "stars": 22915,
+        "contributors": 43,
+        "commits_5_years": 345
+      },
+      {
+        "repo": "emmabostian/developer-portfolios",
+        "stars": 22861,
+        "contributors": 2205,
+        "commits_5_years": 5117
+      },
+      {
+        "repo": "matplotlib/matplotlib",
+        "stars": 22829,
+        "contributors": 1919,
+        "commits_5_years": 15345
+      },
+      {
+        "repo": "serengil/deepface",
+        "stars": 22815,
+        "contributors": 97,
+        "commits_5_years": 1603
+      },
+      {
+        "repo": "mlc-ai/mlc-llm",
+        "stars": 22702,
+        "contributors": 164,
+        "commits_5_years": 1799
+      },
+      {
+        "repo": "magic-wormhole/magic-wormhole",
+        "stars": 22629,
+        "contributors": 90,
+        "commits_5_years": 851
+      },
+      {
+        "repo": "PrefectHQ/prefect",
+        "stars": 22451,
+        "contributors": 441,
+        "commits_5_years": 21521
+      },
+      {
+        "repo": "PromtEngineer/localGPT",
+        "stars": 22213,
+        "contributors": 51,
+        "commits_5_years": 340
+      },
+      {
+        "repo": "tornadoweb/tornado",
+        "stars": 22183,
+        "contributors": 474,
+        "commits_5_years": 693
+      },
+      {
+        "repo": "microsoft/unilm",
+        "stars": 22131,
+        "contributors": 77,
+        "commits_5_years": 1008
+      },
+      {
+        "repo": "cheahjs/free-llm-api-resources",
+        "stars": 22116,
+        "contributors": 5,
+        "commits_5_years": 413
+      },
+      {
+        "repo": "mkdocs/mkdocs",
+        "stars": 22103,
+        "contributors": 262,
+        "commits_5_years": 588
+      },
+      {
+        "repo": "graphdeco-inria/gaussian-splatting",
+        "stars": 22077,
+        "contributors": 14,
+        "commits_5_years": 250
+      },
+      {
+        "repo": "m-bain/whisperX",
+        "stars": 22055,
+        "contributors": 115,
+        "commits_5_years": 545
+      },
+      {
+        "repo": "OthmanAdi/planning-with-files",
+        "stars": 21935,
+        "contributors": 35,
+        "commits_5_years": 236
+      },
+      {
+        "repo": "ahujasid/blender-mcp",
+        "stars": 21930,
+        "contributors": 20,
+        "commits_5_years": 139
+      },
+      {
+        "repo": "recommenders-team/recommenders",
+        "stars": 21717,
+        "contributors": 147,
+        "commits_5_years": 2930
+      },
+      {
+        "repo": "Skyvern-AI/skyvern",
+        "stars": 21707,
+        "contributors": 87,
+        "commits_5_years": 4915
+      },
+      {
+        "repo": "XiaoMi/ha_xiaomi_home",
+        "stars": 21696,
+        "contributors": 37,
+        "commits_5_years": 267
+      },
+      {
+        "repo": "goauthentik/authentik",
+        "stars": 21610,
+        "contributors": 546,
+        "commits_5_years": 17168
+      },
+      {
+        "repo": "huggingface/datasets",
+        "stars": 21534,
+        "contributors": 665,
+        "commits_5_years": 2648
+      },
+      {
+        "repo": "verl-project/verl",
+        "stars": 21506,
+        "contributors": 618,
+        "commits_5_years": 2537
+      },
+      {
+        "repo": "airbytehq/airbyte",
+        "stars": 21315,
+        "contributors": 1202,
+        "commits_5_years": 44674
+      },
+      {
+        "repo": "p-e-w/heretic",
+        "stars": 21272,
+        "contributors": 24,
+        "commits_5_years": 158
+      },
+      {
+        "repo": "FunAudioLLM/CosyVoice",
+        "stars": 21206,
+        "contributors": 52,
+        "commits_5_years": 551
+      },
+      {
+        "repo": "huggingface/peft",
+        "stars": 21184,
+        "contributors": 300,
+        "commits_5_years": 1700
+      },
+      {
+        "repo": "QwenLM/Qwen",
+        "stars": 21177,
+        "contributors": 34,
+        "commits_5_years": 517
+      },
+      {
+        "repo": "RasaHQ/rasa",
+        "stars": 21176,
+        "contributors": 599,
+        "commits_5_years": 5489
+      },
+      {
+        "repo": "marimo-team/marimo",
+        "stars": 21129,
+        "contributors": 292,
+        "commits_5_years": 6118
+      },
+      {
+        "repo": "Zeyi-Lin/HivisionIDPhotos",
+        "stars": 21114,
+        "contributors": 24,
+        "commits_5_years": 445
+      },
+      {
+        "repo": "LiLittleCat/awesome-free-chatgpt",
+        "stars": 21080,
+        "contributors": 21,
+        "commits_5_years": 375
+      },
+      {
+        "repo": "1Panel-dev/MaxKB",
+        "stars": 21035,
+        "contributors": 83,
+        "commits_5_years": 7044
+      },
+      {
+        "repo": "onnx/onnx",
+        "stars": 20872,
+        "contributors": 392,
+        "commits_5_years": 2022
+      },
+      {
+        "repo": "index-tts/index-tts",
+        "stars": 20704,
+        "contributors": 22,
+        "commits_5_years": 232
+      },
+      {
+        "repo": "netbox-community/netbox",
+        "stars": 20588,
+        "contributors": 461,
+        "commits_5_years": 7841
+      },
+      {
+        "repo": "HKUDS/RAG-Anything",
+        "stars": 20557,
+        "contributors": 46,
+        "commits_5_years": 404
+      },
+      {
+        "repo": "python/mypy",
+        "stars": 20443,
+        "contributors": 855,
+        "commits_5_years": 4111
+      },
+      {
+        "repo": "wagtail/wagtail",
+        "stars": 20331,
+        "contributors": 1089,
+        "commits_5_years": 8606
+      },
+      {
+        "repo": "w-okada/voice-changer",
+        "stars": 20270,
+        "contributors": 26,
+        "commits_5_years": 1754
+      },
+      {
+        "repo": "facebook/prophet",
+        "stars": 20191,
+        "contributors": 191,
+        "commits_5_years": 179
+      },
+      {
+        "repo": "hugohe3/ppt-master",
+        "stars": 20160,
+        "contributors": 9,
+        "commits_5_years": 666
+      },
+      {
+        "repo": "Panniantong/Agent-Reach",
+        "stars": 20140,
+        "contributors": 21,
+        "commits_5_years": 249
+      },
+      {
+        "repo": "openai/gpt-oss",
+        "stars": 20117,
+        "contributors": 64,
+        "commits_5_years": 128
+      },
+      {
+        "repo": "google-research/timesfm",
+        "stars": 20076,
+        "contributors": 23,
+        "commits_5_years": 320
+      },
+      {
+        "repo": "openai/skills",
+        "stars": 20069,
+        "contributors": 34,
+        "commits_5_years": 110
+      },
+      {
+        "repo": "nginx-proxy/nginx-proxy",
+        "stars": 19839,
+        "contributors": 170,
+        "commits_5_years": 1006
+      },
+      {
+        "repo": "google/adk-python",
+        "stars": 19821,
+        "contributors": 286,
+        "commits_5_years": 2706
+      },
+      {
+        "repo": "camel-ai/owl",
+        "stars": 19801,
+        "contributors": 47,
+        "commits_5_years": 641
+      },
+      {
+        "repo": "datalab-to/surya",
+        "stars": 19766,
+        "contributors": 18,
+        "commits_5_years": 960
+      },
+      {
+        "repo": "Imbad0202/academic-research-skills",
+        "stars": 19706,
+        "contributors": 7,
+        "commits_5_years": 429
+      },
+      {
+        "repo": "OpenBMB/VoxCPM",
+        "stars": 19654,
+        "contributors": 27,
+        "commits_5_years": 144
+      },
+      {
+        "repo": "akfamily/akshare",
+        "stars": 19624,
+        "contributors": 22,
+        "commits_5_years": 837
+      },
+      {
+        "repo": "CloakHQ/CloakBrowser",
+        "stars": 19557,
+        "contributors": 16,
+        "commits_5_years": 175
+      },
+      {
+        "repo": "kaixindelele/ChatPaper",
+        "stars": 19510,
+        "contributors": 15,
+        "commits_5_years": 348
+      },
+      {
+        "repo": "stitionai/devika",
+        "stars": 19508,
+        "contributors": 47,
+        "commits_5_years": 186
+      },
+      {
+        "repo": "fastapi/typer",
+        "stars": 19459,
+        "contributors": 103,
+        "commits_5_years": 1344
+      },
+      {
+        "repo": "chidiwilliams/buzz",
+        "stars": 19372,
+        "contributors": 31,
+        "commits_5_years": 719
+      },
+      {
+        "repo": "comet-ml/opik",
+        "stars": 19360,
+        "contributors": 125,
+        "commits_5_years": 5873
+      },
+      {
+        "repo": "AIDC-AI/Pixelle-Video",
+        "stars": 19356,
+        "contributors": 17,
+        "commits_5_years": 347
+      },
+      {
+        "repo": "SWE-agent/SWE-agent",
+        "stars": 19280,
+        "contributors": 96,
+        "commits_5_years": 2158
+      },
+      {
+        "repo": "joke2k/faker",
+        "stars": 19259,
+        "contributors": 665,
+        "commits_5_years": 1579
+      },
+      {
+        "repo": "agentskills/agentskills",
+        "stars": 19246,
+        "contributors": 37,
+        "commits_5_years": 123
+      },
+      {
+        "repo": "Avaiga/taipy",
+        "stars": 19221,
+        "contributors": 96,
+        "commits_5_years": 7595
+      },
+      {
+        "repo": "RunaCapital/awesome-oss-alternatives",
+        "stars": 19138,
+        "contributors": 154,
+        "commits_5_years": 409
+      },
+      {
+        "repo": "DrewThomasson/ebook2audiobook",
+        "stars": 19010,
+        "contributors": 35,
+        "commits_5_years": 14077
+      },
+      {
+        "repo": "mxrch/GHunt",
+        "stars": 18972,
+        "contributors": 37,
+        "commits_5_years": 142
+      },
+      {
+        "repo": "kivy/kivy",
+        "stars": 18944,
+        "contributors": 637,
+        "commits_5_years": 647
+      },
+      {
+        "repo": "Alibaba-NLP/DeepResearch",
+        "stars": 18943,
+        "contributors": 30,
+        "commits_5_years": 300
+      },
+      {
+        "repo": "ymcui/Chinese-LLaMA-Alpaca",
+        "stars": 18941,
+        "contributors": 11,
+        "commits_5_years": 558
+      },
+      {
+        "repo": "eosphoros-ai/DB-GPT",
+        "stars": 18822,
+        "contributors": 184,
+        "commits_5_years": 3325
+      },
+      {
+        "repo": "lss233/kirara-ai",
+        "stars": 18759,
+        "contributors": 49,
+        "commits_5_years": 1633
+      },
+      {
+        "repo": "astral-sh/ty",
+        "stars": 18725,
+        "contributors": 44,
+        "commits_5_years": 487
+      },
+      {
+        "repo": "spotify/luigi",
+        "stars": 18722,
+        "contributors": 635,
+        "commits_5_years": 316
+      },
+      {
+        "repo": "huggingface/sentence-transformers",
+        "stars": 18715,
+        "contributors": 262,
+        "commits_5_years": 1966
+      },
+      {
+        "repo": "pyscript/pyscript",
+        "stars": 18689,
+        "contributors": 127,
+        "commits_5_years": 1326
+      },
+      {
+        "repo": "hummingbot/hummingbot",
+        "stars": 18649,
+        "contributors": 311,
+        "commits_5_years": 17516
+      },
+      {
+        "repo": "sanic-org/sanic",
+        "stars": 18638,
+        "contributors": 369,
+        "commits_5_years": 471
+      },
+      {
+        "repo": "HKUDS/AI-Trader",
+        "stars": 18561,
+        "contributors": 19,
+        "commits_5_years": 343
+      },
+      {
+        "repo": "plotly/plotly.py",
+        "stars": 18548,
+        "contributors": 321,
+        "commits_5_years": 3616
+      },
+      {
+        "repo": "openai/evals",
+        "stars": 18522,
+        "contributors": 442,
+        "commits_5_years": 691
+      },
+      {
+        "repo": "huggingface/trl",
+        "stars": 18448,
+        "contributors": 482,
+        "commits_5_years": 2797
+      },
+      {
+        "repo": "KlingAIResearch/LivePortrait",
+        "stars": 18408,
+        "contributors": 12,
+        "commits_5_years": 125
+      },
+      {
+        "repo": "state-spaces/mamba",
+        "stars": 18292,
+        "contributors": 55,
+        "commits_5_years": 226
+      },
+      {
+        "repo": "mikf/gallery-dl",
+        "stars": 18254,
+        "contributors": 210,
+        "commits_5_years": 4982
+      },
+      {
+        "repo": "emcie-co/parlant",
+        "stars": 18086,
+        "contributors": 46,
+        "commits_5_years": 5476
+      },
+      {
+        "repo": "Evil0ctal/Douyin_TikTok_Download_API",
+        "stars": 18018,
+        "contributors": 24,
+        "commits_5_years": 1123
+      },
+      {
+        "repo": "fastapi/sqlmodel",
+        "stars": 17972,
+        "contributors": 112,
+        "commits_5_years": 1230
+      },
+      {
+        "repo": "stas00/ml-engineering",
+        "stars": 17970,
+        "contributors": 49,
+        "commits_5_years": 1024
+      },
+      {
+        "repo": "xming521/WeClone",
+        "stars": 17939,
+        "contributors": 12,
+        "commits_5_years": 440
+      },
+      {
+        "repo": "arc53/DocsGPT",
+        "stars": 17896,
+        "contributors": 236,
+        "commits_5_years": 4757
+      },
+      {
+        "repo": "smicallef/spiderfoot",
+        "stars": 17883,
+        "contributors": 57,
+        "commits_5_years": 595
+      },
+      {
+        "repo": "apple/ml-stable-diffusion",
+        "stars": 17852,
+        "contributors": 40,
+        "commits_5_years": 127
+      },
+      {
+        "repo": "fail2ban/fail2ban",
+        "stars": 17822,
+        "contributors": 293,
+        "commits_5_years": 667
+      },
+      {
+        "repo": "agent0ai/agent-zero",
+        "stars": 17779,
+        "contributors": 52,
+        "commits_5_years": 2195
+      },
+      {
+        "repo": "pytorch/vision",
+        "stars": 17692,
+        "contributors": 684,
+        "commits_5_years": 2466
+      },
+      {
+        "repo": "ActivityWatch/activitywatch",
+        "stars": 17647,
+        "contributors": 32,
+        "commits_5_years": 395
+      },
+      {
+        "repo": "jianchang512/pyvideotrans",
+        "stars": 17513,
+        "contributors": 29,
+        "commits_5_years": 1212
+      },
+      {
+        "repo": "pallets/click",
+        "stars": 17508,
+        "contributors": 445,
+        "commits_5_years": 1270
+      },
+      {
+        "repo": "topoteretes/cognee",
+        "stars": 17476,
+        "contributors": 160,
+        "commits_5_years": 7577
+      },
+      {
+        "repo": "dortania/OpenCore-Legacy-Patcher",
+        "stars": 17462,
+        "contributors": 42,
+        "commits_5_years": 3166
+      },
+      {
+        "repo": "MustardChef/WSABuilds",
+        "stars": 17397,
+        "contributors": 37,
+        "commits_5_years": 1476
+      },
+      {
+        "repo": "allenai/olmocr",
+        "stars": 17347,
+        "contributors": 16,
+        "commits_5_years": 2126
+      },
+      {
+        "repo": "tirth8205/code-review-graph",
+        "stars": 17258,
+        "contributors": 78,
+        "commits_5_years": 442
+      },
+      {
+        "repo": "NVIDIA-NeMo/NeMo",
+        "stars": 17253,
+        "contributors": 491,
+        "commits_5_years": 5712
+      },
+      {
+        "repo": "pydantic/pydantic-ai",
+        "stars": 17242,
+        "contributors": 452,
+        "commits_5_years": 2102
+      },
+      {
+        "repo": "microsoft/agent-lightning",
+        "stars": 17212,
+        "contributors": 31,
+        "commits_5_years": 255
+      },
+      {
+        "repo": "ranger/ranger",
+        "stars": 17197,
+        "contributors": 271,
+        "commits_5_years": 710
+      },
+      {
+        "repo": "kvcache-ai/ktransformers",
+        "stars": 17190,
+        "contributors": 115,
+        "commits_5_years": 1275
+      },
+      {
+        "repo": "Huanshere/VideoLingo",
+        "stars": 17130,
+        "contributors": 19,
+        "commits_5_years": 969
+      },
+      {
+        "repo": "google/magika",
+        "stars": 17042,
+        "contributors": 43,
+        "commits_5_years": 1745
+      },
+      {
+        "repo": "camel-ai/camel",
+        "stars": 17025,
+        "contributors": 213,
+        "commits_5_years": 2209
+      },
+      {
+        "repo": "aws/aws-cli",
+        "stars": 16984,
+        "contributors": 500,
+        "commits_5_years": 4561
+      },
+      {
+        "repo": "networkx/networkx",
+        "stars": 16938,
+        "contributors": 832,
+        "commits_5_years": 1806
+      },
+      {
+        "repo": "agentscope-ai/QwenPaw",
+        "stars": 16903,
+        "contributors": 164,
+        "commits_5_years": 1254
+      },
+      {
+        "repo": "exaloop/codon",
+        "stars": 16782,
+        "contributors": 21,
+        "commits_5_years": 955
+      },
+      {
+        "repo": "ipython/ipython",
+        "stars": 16705,
+        "contributors": 1069,
+        "commits_5_years": 3359
+      },
+      {
+        "repo": "rendercv/rendercv",
+        "stars": 16693,
+        "contributors": 63,
+        "commits_5_years": 1961
+      },
+      {
+        "repo": "caronc/apprise",
+        "stars": 16613,
+        "contributors": 103,
+        "commits_5_years": 626
+      },
+      {
+        "repo": "QwenLM/Qwen3-Coder",
+        "stars": 16549,
+        "contributors": 35,
+        "commits_5_years": 353
+      },
+      {
+        "repo": "suitenumerique/docs",
+        "stars": 16529,
+        "contributors": 73,
+        "commits_5_years": 2096
+      },
+      {
+        "repo": "AsyncFuncAI/deepwiki-open",
+        "stars": 16521,
+        "contributors": 66,
+        "commits_5_years": 219
+      },
+      {
+        "repo": "Free-TV/IPTV",
+        "stars": 16443,
+        "contributors": 104,
+        "commits_5_years": 1444
+      },
+      {
+        "repo": "aio-libs/aiohttp",
+        "stars": 16441,
+        "contributors": 839,
+        "commits_5_years": 5523
+      },
+      {
+        "repo": "NVIDIA/Megatron-LM",
+        "stars": 16431,
+        "contributors": 338,
+        "commits_5_years": 7999
+      },
+      {
+        "repo": "piskvorky/gensim",
+        "stars": 16417,
+        "contributors": 464,
+        "commits_5_years": 392
+      },
+      {
+        "repo": "QwenLM/Qwen-Agent",
+        "stars": 16385,
+        "contributors": 35,
+        "commits_5_years": 304
+      },
+      {
+        "repo": "laramies/theHarvester",
+        "stars": 16299,
+        "contributors": 123,
+        "commits_5_years": 2068
+      },
+      {
+        "repo": "modelscope/FunASR",
+        "stars": 16211,
+        "contributors": 176,
+        "commits_5_years": 4934
+      },
+      {
+        "repo": "raga-ai-hub/RagaAI-Catalyst",
+        "stars": 16165,
+        "contributors": 28,
+        "commits_5_years": 1095
+      },
+      {
+        "repo": "flet-dev/flet",
+        "stars": 16119,
+        "contributors": 90,
+        "commits_5_years": 1431
+      },
+      {
+        "repo": "langbot-app/LangBot",
+        "stars": 16093,
+        "contributors": 84,
+        "commits_5_years": 3533
+      },
+      {
+        "repo": "tgbot-collection/YYeTsBot",
+        "stars": 16083,
+        "contributors": 8,
+        "commits_5_years": 368
+      },
+      {
+        "repo": "Rapptz/discord.py",
+        "stars": 16067,
+        "contributors": 455,
+        "commits_5_years": 2293
+      },
+      {
+        "repo": "alirezarezvani/claude-skills",
+        "stars": 16011,
+        "contributors": 31,
+        "commits_5_years": 979
+      },
+      {
+        "repo": "browser-use/web-ui",
+        "stars": 15992,
+        "contributors": 57,
+        "commits_5_years": 450
+      },
+      {
+        "repo": "MatrixTM/MHDDoS",
+        "stars": 15937,
+        "contributors": 32,
+        "commits_5_years": 476
+      },
+      {
+        "repo": "muratcankoylan/Agent-Skills-for-Context-Engineering",
+        "stars": 15907,
+        "contributors": 10,
+        "commits_5_years": 162
+      },
+      {
+        "repo": "wkentaro/labelme",
+        "stars": 15902,
+        "contributors": 83,
+        "commits_5_years": 1583
+      },
+      {
+        "repo": "cvat-ai/cvat",
+        "stars": 15890,
+        "contributors": 304,
+        "commits_5_years": 4031
+      },
+      {
+        "repo": "cft0808/edict",
+        "stars": 15847,
+        "contributors": 17,
+        "commits_5_years": 149
+      },
+      {
+        "repo": "zauberzeug/nicegui",
+        "stars": 15833,
+        "contributors": 218,
+        "commits_5_years": 6437
+      },
+      {
+        "repo": "jaakkopasanen/AutoEq",
+        "stars": 15824,
+        "contributors": 19,
+        "commits_5_years": 391
+      },
+      {
+        "repo": "Kanaries/pygwalker",
+        "stars": 15804,
+        "contributors": 27,
+        "commits_5_years": 637
+      },
+      {
+        "repo": "pyecharts/pyecharts",
+        "stars": 15767,
+        "contributors": 45,
+        "commits_5_years": 187
+      },
+      {
+        "repo": "fortra/impacket",
+        "stars": 15746,
+        "contributors": 306,
+        "commits_5_years": 819
+      },
+      {
+        "repo": "HKUDS/DeepCode",
+        "stars": 15684,
+        "contributors": 8,
+        "commits_5_years": 161
+      },
+      {
+        "repo": "confident-ai/deepeval",
+        "stars": 15655,
+        "contributors": 288,
+        "commits_5_years": 9473
+      },
+      {
+        "repo": "treeverse/dvc",
+        "stars": 15622,
+        "contributors": 331,
+        "commits_5_years": 2965
+      },
+      {
+        "repo": "dagster-io/dagster",
+        "stars": 15562,
+        "contributors": 675,
+        "commits_5_years": 19877
+      },
+      {
+        "repo": "mindverse/Second-Me",
+        "stars": 15543,
+        "contributors": 35,
+        "commits_5_years": 186
+      },
+      {
+        "repo": "microsoft/pyright",
+        "stars": 15451,
+        "contributors": 145,
+        "commits_5_years": 5030
+      },
+      {
+        "repo": "saltstack/salt",
+        "stars": 15448,
+        "contributors": 4034,
+        "commits_5_years": 12767
+      },
+      {
+        "repo": "fabric/fabric",
+        "stars": 15437,
+        "contributors": 19,
+        "commits_5_years": 156
+      },
+      {
+        "repo": "ansible/awx",
+        "stars": 15428,
+        "contributors": 689,
+        "commits_5_years": 5203
+      },
+      {
+        "repo": "edent/SuperTinyIcons",
+        "stars": 15339,
+        "contributors": 178,
+        "commits_5_years": 924
+      },
+      {
+        "repo": "rossant/awesome-math",
+        "stars": 15339,
+        "contributors": 80,
+        "commits_5_years": 139
+      },
+      {
+        "repo": "GaiZhenbiao/ChuanhuChatGPT",
+        "stars": 15332,
+        "contributors": 55,
+        "commits_5_years": 1263
+      },
+      {
+        "repo": "jupyter/jupyter",
+        "stars": 15313,
+        "contributors": 107,
+        "commits_5_years": 318
+      },
+      {
+        "repo": "Canner/WrenAI",
+        "stars": 15311,
+        "contributors": 61,
+        "commits_5_years": 2465
+      },
+      {
+        "repo": "mail-in-a-box/mailinabox",
+        "stars": 15311,
+        "contributors": 242,
+        "commits_5_years": 363
+      },
+      {
+        "repo": "pre-commit/pre-commit",
+        "stars": 15300,
+        "contributors": 166,
+        "commits_5_years": 824
+      },
+      {
+        "repo": "albumentations-team/albumentations",
+        "stars": 15298,
+        "contributors": 172,
+        "commits_5_years": 695
+      },
+      {
+        "repo": "encode/httpx",
+        "stars": 15287,
+        "contributors": 247,
+        "commits_5_years": 522
+      },
+      {
+        "repo": "lra/mackup",
+        "stars": 15243,
+        "contributors": 501,
+        "commits_5_years": 325
+      },
+      {
+        "repo": "beetbox/beets",
+        "stars": 15174,
+        "contributors": 706,
+        "commits_5_years": 4417
+      },
+      {
+        "repo": "budtmo/docker-android",
+        "stars": 15144,
+        "contributors": 59,
+        "commits_5_years": 242
+      },
+      {
+        "repo": "andkret/Cookbook",
+        "stars": 15105,
+        "contributors": 40,
+        "commits_5_years": 124
+      },
+      {
+        "repo": "bloomberg/memray",
+        "stars": 15048,
+        "contributors": 71,
+        "commits_5_years": 1269
+      },
+      {
+        "repo": "jundot/omlx",
+        "stars": 14991,
+        "contributors": 113,
+        "commits_5_years": 1237
+      },
+      {
+        "repo": "llmware-ai/llmware",
+        "stars": 14863,
+        "contributors": 89,
+        "commits_5_years": 2386
+      },
+      {
+        "repo": "Nuitka/Nuitka",
+        "stars": 14852,
+        "contributors": 210,
+        "commits_5_years": 7185
+      },
+      {
+        "repo": "MemoriLabs/Memori",
+        "stars": 14816,
+        "contributors": 37,
+        "commits_5_years": 600
+      },
+      {
+        "repo": "teng-lin/notebooklm-py",
+        "stars": 14809,
+        "contributors": 25,
+        "commits_5_years": 1231
+      },
+      {
+        "repo": "Comfy-Org/ComfyUI-Manager",
+        "stars": 14773,
+        "contributors": 824,
+        "commits_5_years": 4756
+      },
+      {
+        "repo": "coderamp-labs/gitingest",
+        "stars": 14752,
+        "contributors": 55,
+        "commits_5_years": 405
+      },
+      {
+        "repo": "scipy/scipy",
+        "stars": 14716,
+        "contributors": 1911,
+        "commits_5_years": 11762
+      },
+      {
+        "repo": "WEIFENG2333/VideoCaptioner",
+        "stars": 14700,
+        "contributors": 13,
+        "commits_5_years": 527
+      },
+      {
+        "repo": "horovod/horovod",
+        "stars": 14690,
+        "contributors": 176,
+        "commits_5_years": 399
+      },
+      {
+        "repo": "Anionex/banana-slides",
+        "stars": 14674,
+        "contributors": 17,
+        "commits_5_years": 771
+      },
+      {
+        "repo": "microsoft/playwright-python",
+        "stars": 14664,
+        "contributors": 53,
+        "commits_5_years": 669
+      },
+      {
+        "repo": "sympy/sympy",
+        "stars": 14643,
+        "contributors": 1489,
+        "commits_5_years": 15033
+      },
+      {
+        "repo": "Zulko/moviepy",
+        "stars": 14630,
+        "contributors": 191,
+        "commits_5_years": 494
+      },
+      {
+        "repo": "nltk/nltk",
+        "stars": 14623,
+        "contributors": 497,
+        "commits_5_years": 1092
+      },
+      {
+        "repo": "google-deepmind/alphafold",
+        "stars": 14612,
+        "contributors": 25,
+        "commits_5_years": 209
+      },
+      {
+        "repo": "pyodide/pyodide",
+        "stars": 14612,
+        "contributors": 306,
+        "commits_5_years": 2763
+      },
+      {
+        "repo": "SWivid/F5-TTS",
+        "stars": 14577,
+        "contributors": 63,
+        "commits_5_years": 696
+      },
+      {
+        "repo": "BlinkDL/RWKV-LM",
+        "stars": 14537,
+        "contributors": 5,
+        "commits_5_years": 877
+      },
+      {
+        "repo": "JoeanAmier/TikTokDownloader",
+        "stars": 14530,
+        "contributors": 5,
+        "commits_5_years": 1895
+      },
+      {
+        "repo": "gunthercox/ChatterBot",
+        "stars": 14484,
+        "contributors": 107,
+        "commits_5_years": 198
+      },
+      {
+        "repo": "LibreTranslate/LibreTranslate",
+        "stars": 14414,
+        "contributors": 292,
+        "commits_5_years": 1550
+      },
+      {
+        "repo": "flairNLP/flair",
+        "stars": 14380,
+        "contributors": 278,
+        "commits_5_years": 3311
+      },
+      {
+        "repo": "vectorize-io/hindsight",
+        "stars": 14317,
+        "contributors": 97,
+        "commits_5_years": 1408
+      },
+      {
+        "repo": "MODSetter/SurfSense",
+        "stars": 14292,
+        "contributors": 80,
+        "commits_5_years": 5994
+      },
+      {
+        "repo": "maurosoria/dirsearch",
+        "stars": 14288,
+        "contributors": 113,
+        "commits_5_years": 886
+      },
+      {
+        "repo": "dmlc/dgl",
+        "stars": 14275,
+        "contributors": 298,
+        "commits_5_years": 2703
+      },
+      {
+        "repo": "optuna/optuna",
+        "stars": 14237,
+        "contributors": 386,
+        "commits_5_years": 10848
+      },
+      {
+        "repo": "modelscope/ms-swift",
+        "stars": 14232,
+        "contributors": 147,
+        "commits_5_years": 3325
+      },
+      {
+        "repo": "SFTtech/openage",
+        "stars": 14220,
+        "contributors": 221,
+        "commits_5_years": 1866
+      },
+      {
+        "repo": "PaddlePaddle/PaddleDetection",
+        "stars": 14216,
+        "contributors": 188,
+        "commits_5_years": 1375
+      },
+      {
+        "repo": "unifyai/ivy",
+        "stars": 14190,
+        "contributors": 1486,
+        "commits_5_years": 19003
+      },
+      {
+        "repo": "sml2h3/ddddocr",
+        "stars": 14110,
+        "contributors": 9,
+        "commits_5_years": 111
+      },
+      {
+        "repo": "geldata/gel",
+        "stars": 14089,
+        "contributors": 140,
+        "commits_5_years": 4162
+      },
+      {
+        "repo": "idank/explainshell",
+        "stars": 14061,
+        "contributors": 27,
+        "commits_5_years": 475
+      },
+      {
+        "repo": "vibrantlabsai/ragas",
+        "stars": 14029,
+        "contributors": 246,
+        "commits_5_years": 1147
+      },
+      {
+        "repo": "FlareSolverr/FlareSolverr",
+        "stars": 14006,
+        "contributors": 46,
+        "commits_5_years": 334
+      },
+      {
+        "repo": "google/yapf",
+        "stars": 13983,
+        "contributors": 156,
+        "commits_5_years": 232
+      },
+      {
+        "repo": "mwaskom/seaborn",
+        "stars": 13887,
+        "contributors": 216,
+        "commits_5_years": 466
+      },
+      {
+        "repo": "dottxt-ai/outlines",
+        "stars": 13879,
+        "contributors": 157,
+        "commits_5_years": 1254
+      },
+      {
+        "repo": "pytest-dev/pytest",
+        "stars": 13870,
+        "contributors": 1117,
+        "commits_5_years": 3651
+      },
+      {
+        "repo": "prowler-cloud/prowler",
+        "stars": 13865,
+        "contributors": 397,
+        "commits_5_years": 6870
+      },
+      {
+        "repo": "mlfoundations/open_clip",
+        "stars": 13847,
+        "contributors": 68,
+        "commits_5_years": 680
+      },
+      {
+        "repo": "dask/dask",
+        "stars": 13844,
+        "contributors": 650,
+        "commits_5_years": 3264
+      },
+      {
+        "repo": "Tencent-Hunyuan/Hunyuan3D-2",
+        "stars": 13824,
+        "contributors": 37,
+        "commits_5_years": 184
+      },
+      {
+        "repo": "andrewyng/aisuite",
+        "stars": 13780,
+        "contributors": 33,
+        "commits_5_years": 298
+      },
+      {
+        "repo": "rohitg00/ai-engineering-from-scratch",
+        "stars": 13777,
+        "contributors": 6,
+        "commits_5_years": 1115
+      },
+      {
+        "repo": "ag-ui-protocol/ag-ui",
+        "stars": 13768,
+        "contributors": 110,
+        "commits_5_years": 1844
+      },
+      {
+        "repo": "yusufkaraaslan/Skill_Seekers",
+        "stars": 13725,
+        "contributors": 40,
+        "commits_5_years": 726
+      },
+      {
+        "repo": "NVIDIA/TensorRT-LLM",
+        "stars": 13703,
+        "contributors": 384,
+        "commits_5_years": 6808
+      },
+      {
+        "repo": "NevaMind-AI/memU",
+        "stars": 13692,
+        "contributors": 30,
+        "commits_5_years": 288
+      },
+      {
+        "repo": "evilsocket/opensnitch",
+        "stars": 13678,
+        "contributors": 105,
+        "commits_5_years": 1312
+      },
+      {
+        "repo": "alexta69/metube",
+        "stars": 13621,
+        "contributors": 87,
+        "commits_5_years": 651
+      },
+      {
+        "repo": "nikopueringer/CorridorKey",
+        "stars": 13605,
+        "contributors": 35,
+        "commits_5_years": 196
+      },
+      {
+        "repo": "python-pillow/Pillow",
+        "stars": 13579,
+        "contributors": 505,
+        "commits_5_years": 8366
+      },
+      {
+        "repo": "browser-use/browser-harness",
+        "stars": 13576,
+        "contributors": 68,
+        "commits_5_years": 391
+      },
+      {
+        "repo": "Data-Centric-AI-Community/fg-data-profiling",
+        "stars": 13570,
+        "contributors": 141,
+        "commits_5_years": 710
+      },
+      {
+        "repo": "redis/redis-py",
+        "stars": 13538,
+        "contributors": 546,
+        "commits_5_years": 1193
+      },
+      {
+        "repo": "cookiecutter/cookiecutter-django",
+        "stars": 13524,
+        "contributors": 472,
+        "commits_5_years": 3906
+      },
+      {
+        "repo": "searx/searx",
+        "stars": 13497,
+        "contributors": 208,
+        "commits_5_years": 360
+      },
+      {
+        "repo": "Gallopsled/pwntools",
+        "stars": 13457,
+        "contributors": 306,
+        "commits_5_years": 627
+      },
+      {
+        "repo": "plasma-umass/scalene",
+        "stars": 13425,
+        "contributors": 57,
+        "commits_5_years": 2169
+      },
+      {
+        "repo": "apache/tvm",
+        "stars": 13382,
+        "contributors": 1144,
+        "commits_5_years": 7846
+      },
+      {
+        "repo": "Lightning-AI/litgpt",
+        "stars": 13380,
+        "contributors": 132,
+        "commits_5_years": 1475
+      },
+      {
+        "repo": "TomSchimansky/CustomTkinter",
+        "stars": 13368,
+        "contributors": 14,
+        "commits_5_years": 551
+      },
+      {
+        "repo": "borgbackup/borg",
+        "stars": 13357,
+        "contributors": 364,
+        "commits_5_years": 3729
+      },
+      {
+        "repo": "sshuttle/sshuttle",
+        "stars": 13334,
+        "contributors": 156,
+        "commits_5_years": 476
+      },
+      {
+        "repo": "DLR-RM/stable-baselines3",
+        "stars": 13316,
+        "contributors": 172,
+        "commits_5_years": 398
+      },
+      {
+        "repo": "getpelican/pelican",
+        "stars": 13303,
+        "contributors": 485,
+        "commits_5_years": 560
+      },
+      {
+        "repo": "FujiwaraChoki/MoneyPrinter",
+        "stars": 13298,
+        "contributors": 29,
+        "commits_5_years": 219
+      },
+      {
+        "repo": "GreyDGL/PentestGPT",
+        "stars": 13249,
+        "contributors": 24,
+        "commits_5_years": 302
+      },
+      {
+        "repo": "dbcli/pgcli",
+        "stars": 13182,
+        "contributors": 197,
+        "commits_5_years": 180
+      },
+      {
+        "repo": "microsoft/RD-Agent",
+        "stars": 13175,
+        "contributors": 37,
+        "commits_5_years": 1009
+      },
+      {
+        "repo": "Jiayi-Pan/TinyZero",
+        "stars": 13111,
+        "contributors": 15,
+        "commits_5_years": 156
+      },
+      {
+        "repo": "567-labs/instructor",
+        "stars": 13010,
+        "contributors": 251,
+        "commits_5_years": 1557
       }
     ],
     "stars_hist": [

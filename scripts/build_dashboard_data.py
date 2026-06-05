@@ -310,11 +310,27 @@ def process_repos(commit_counts: Counter[str]):
             )
 
     repo_count = len(repos)
+    
+    # Create lookup dict for full repo data
+    repo_lookup = {repo["repo"]: repo for repo in repos}
+    
+    # Top 10 by stars (para exibição especial)
     top_by_stars = sorted(repos, key=lambda item: item["stars"], reverse=True)[:10]
-    top_by_commits = [
-        {"repo": name, "commits": count}
-        for name, count in commit_counts.most_common(10)
-    ]
+    
+    # Top 10 by commits (para exibição especial)
+    top_by_commits = []
+    for name, count in commit_counts.most_common(10):
+        repo_data = repo_lookup.get(name, {})
+        top_by_commits.append({
+            "repo": name,
+            "commits": count,
+            "stars": repo_data.get("stars", 0),
+            "contributors": repo_data.get("contributors", 0),
+            "commits_5_years": repo_data.get("commits_5_years", 0)
+        })
+    
+    # TODOS os repos ordenados por stars (para tabela interativa)
+    all_repos = sorted(repos, key=lambda item: item["stars"], reverse=True)
 
     bins = [
         ("<1k", 0, 1000),
@@ -340,6 +356,7 @@ def process_repos(commit_counts: Counter[str]):
         "repo_count": repo_count,
         "top_by_stars": top_by_stars,
         "top_by_commits": top_by_commits,
+        "all_repos": all_repos,
         "stars_hist": hist_counts,
     }
 
@@ -366,6 +383,7 @@ def main() -> None:
             },
             "top_repos_by_stars": repo_data["top_by_stars"],
             "top_repos_by_commits": repo_data["top_by_commits"],
+            "all_repos": repo_data["all_repos"],
             "stars_hist": repo_data["stars_hist"],
         },
         "q1": {

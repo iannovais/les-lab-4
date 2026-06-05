@@ -54,7 +54,7 @@
       width: 100%; padding: 9px 10px; border-radius: 7px;
       color: var(--muted); background: transparent; border: none;
       font-size: 12px; font-weight: 500; font-family: inherit;
-      cursor: pointer; transition: background .12s, color .12s;
+      cursor: pointer;
       margin-bottom: 2px; text-align: left;
     }
     .sb-nav button .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; opacity: .4; }
@@ -71,7 +71,7 @@
     .sz-item {
       display: flex; align-items: center; gap: 8px;
       padding: 9px 11px; border-radius: 7px; border: 1px solid var(--bd);
-      cursor: pointer; user-select: none; transition: all .13s;
+      cursor: pointer; user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
     .sz-item:hover { border-color: rgba(148,163,184,.25); }
@@ -89,7 +89,7 @@
       width: 100%; margin-top: 8px; padding: 5px 10px;
       background: transparent; border: 1px dashed rgba(148,163,184,.2);
       border-radius: 6px; color: var(--muted); font-size: 11px;
-      font-family: inherit; cursor: pointer; text-align: center; transition: all .12s;
+      font-family: inherit; cursor: pointer; text-align: center;
     }
     .sz-all:hover { color: var(--text); border-color: rgba(148,163,184,.35); }
 
@@ -98,7 +98,7 @@
     .mt-item {
       display: flex; align-items: center; gap: 8px;
       padding: 6px 10px; border-radius: 6px; border: 1px solid var(--bd);
-      cursor: pointer; user-select: none; transition: all .12s;
+      cursor: pointer; user-select: none;
     }
     .mt-item input { display: none; }
     .mt-chk { width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid rgba(148,163,184,.3); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
@@ -173,7 +173,7 @@
     /* filter bar */
     .fbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
     .fbar-lbl { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-right: 2px; }
-    .fbtn { appearance: none; background: transparent; border: 1px solid var(--bd); color: var(--muted); padding: 4px 11px; border-radius: 999px; font-size: 11px; font-weight: 500; cursor: pointer; transition: all .12s; font-family: inherit; }
+    .fbtn { appearance: none; background: transparent; border: 1px solid var(--bd); color: var(--muted); padding: 4px 11px; border-radius: 999px; font-size: 11px; font-weight: 500; cursor: pointer; font-family: inherit; }
     .fbtn:hover  { border-color: rgba(148,163,184,.3); color: var(--text); }
     .fbtn.active { background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.4); color: #93c5fd; }
 
@@ -237,29 +237,6 @@
 
   <div class="sb-sep"></div>
 
-  <!-- RQ2 metric filter -->
-  <div class="sb-sect">
-    <div class="sb-lbl">Métricas — RQ2</div>
-    <div class="mt-list">
-      <label class="mt-item on" data-m="comments">
-        <input type="checkbox" checked />
-        <span class="mt-chk">✓</span><span class="mt-lbl">Comentários</span>
-      </label>
-      <label class="mt-item on" data-m="density">
-        <input type="checkbox" checked />
-        <span class="mt-chk">✓</span><span class="mt-lbl">Densidade</span>
-      </label>
-      <label class="mt-item on" data-m="firstReview">
-        <input type="checkbox" checked />
-        <span class="mt-chk">✓</span><span class="mt-lbl">1ª Revisão</span>
-      </label>
-      <label class="mt-item on" data-m="close">
-        <input type="checkbox" checked />
-        <span class="mt-chk">✓</span><span class="mt-lbl">Fechamento</span>
-      </label>
-    </div>
-  </div>
-
 </aside>
 
 <!-- ===== PAGES ===== -->
@@ -303,7 +280,7 @@
       <div class="cc-t" style="margin-bottom:10px;">Repositórios — Tabela interativa</div>
       <div class="fbar">
         <span class="fbar-lbl">Ordenar:</span>
-        <button class="fbtn active" data-sort="stars">⭐ Stars</button>
+        <button class="fbtn active" data-sort="stars">Stars</button>
         <button class="fbtn" data-sort="commits">Commits</button>
         <button class="fbtn" data-sort="contributors">Contribuidores</button>
         <span class="fbar-lbl" style="margin-left:10px;">Mostrar:</span>
@@ -475,7 +452,7 @@ function mkBar(id, labels, datasets, opts) {
     data: { labels: labels, datasets: datasets },
     options: {
       maintainAspectRatio: false,
-      animation: { duration: 280 },
+      animation: { duration: 0 },
       plugins: {
         legend: {
           display: datasets.length > 1,
@@ -499,7 +476,7 @@ function mkLine(id, labels, datasets, opts) {
     data: { labels: labels, datasets: datasets },
     options: {
       maintainAspectRatio: false,
-      animation: { duration: 280 },
+      animation: { duration: 0 },
       plugins: {
         legend: { display: false },
         tooltip: opts.tip ? { callbacks: { label: opts.tip } } : {}
@@ -518,7 +495,7 @@ function mkDoughnut(id, labels, vals, colors) {
     data: { labels: labels, datasets: [{ data: vals, backgroundColor: colors, borderWidth: 0 }] },
     options: {
       maintainAspectRatio: false,
-      animation: { duration: 280 },
+      animation: { duration: 0 },
       plugins: {
         legend: {
           display: true, position: 'bottom',
@@ -578,9 +555,16 @@ function renderOverview() {
 
 /* ===================== TABLE ===================== */
 function renderTable() {
-  var src = RAW.dataset.top_repos_by_stars.map(function(r) {
-    return { repo:r.repo, stars:r.stars, commits:r.commits_5_years, contributors:r.contributors };
+  // Usar todos os repos do dataset
+  var src = (RAW.dataset.all_repos || []).map(function(r) {
+    return { 
+      repo: r.repo, 
+      stars: r.stars || 0, 
+      commits: r.commits_5_years || 0, 
+      contributors: r.contributors || 0 
+    };
   });
+  
   src.sort(function(a,b){ return b[tableSort]-a[tableSort]; });
   var rows = tableTopN === 0 ? src : src.slice(0, tableTopN);
   var maxV = Math.max.apply(null, src.map(function(r){ return r[tableSort]; }));
@@ -599,6 +583,9 @@ function renderTable() {
 
   document.querySelectorAll('[data-sort]').forEach(function(b) {
     b.classList.toggle('active', b.dataset.sort === tableSort);
+  });
+  document.querySelectorAll('[data-topn]').forEach(function(b) {
+    b.classList.toggle('active', parseInt(b.dataset.topn) === tableTopN);
   });
   document.querySelectorAll('th[data-col]').forEach(function(th) {
     var isSorted = th.dataset.col === tableSort;
@@ -791,9 +778,6 @@ document.querySelectorAll('[data-sort]').forEach(function(btn) {
 document.querySelectorAll('[data-topn]').forEach(function(btn) {
   btn.addEventListener('click', function() {
     tableTopN = parseInt(btn.dataset.topn);
-    document.querySelectorAll('[data-topn]').forEach(function(b) {
-      b.classList.toggle('active', b.dataset.topn === btn.dataset.topn);
-    });
     renderTable();
   });
 });
