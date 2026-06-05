@@ -329,23 +329,20 @@
       </div>
     </div>
 
-    <div class="cg cg1">
-      <div class="cc s2">
+    <div class="cg cg2" style="margin-bottom:12px;">
+      <div class="cc">
         <div class="cc-t">LOC mediano: BIC vs. Normais</div>
         <div class="cc-sub">Linhas de código alteradas por tipo de commit (M1.1 — proxy do tamanho)</div>
         <div class="cw h200"><canvas id="c-q1-loc-comparison"></canvas></div>
       </div>
-    </div>
-
-    <div class="cg cg1">
-      <div class="cc s2">
+      <div class="cc">
         <div class="cc-t">Burden e Impacto</div>
         <div class="cc-sub">Radius proporcional ao LOC; X=classe; Y=BIC rate; cor=tamanho</div>
         <div class="cw h220"><canvas id="c-q1-bubble"></canvas></div>
       </div>
     </div>
 
-    <div class="cg cg1">
+    <div class="cg cg2">
       <div class="cc s2">
         <div class="cc-t">Distribuição de BICs no total</div>
         <div class="cc-sub">% do total de commits que introduzem bugs (BICs) por classe de tamanho</div>
@@ -663,7 +660,7 @@ function renderRQ1() {
     return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
       '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.bic_rate)+'</div>' +
       '<div class="l">BICs · '+S_LBL[i.size]+'</div>' +
-      '<div class="s">'+fmtK(i.bic_count)+' de '+fmtK(i.total)+' | LOC: '+i.loc_median_bic+'</div>' +
+      '<div class="s">'+i.bic_count.toLocaleString('pt-BR')+' de '+i.total.toLocaleString('pt-BR')+' | LOC: '+i.loc_median_bic+'</div>' +
       '</div>';
   }).join('');
 
