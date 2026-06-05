@@ -3,711 +3,825 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LAB04 - Dashboard de Resultados</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>BI — Commits & Manutenibilidade · Python OSS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f1720;
-      --bg-alt: #111827;
-      --card: #131b26;
-      --muted: #a7b3c4;
-      --text: #f8fafc;
-      --accent: #f59e0b;
-      --accent-2: #14b8a6;
-      --accent-3: #ef4444;
-      --grid-gap: 20px;
-      --radius: 16px;
-      --shadow: 0 18px 45px rgba(15, 23, 32, 0.35);
+      --bg:    #07101d;
+      --surf:  #0c1624;
+      --card:  #101c2e;
+      --bd:    rgba(148,163,184,0.1);
+      --text:  #e2e8f0;
+      --muted: #60748a;
+      --sml:   #14b8a6;
+      --med:   #f59e0b;
+      --lrg:   #ef4444;
+      --blue:  #3b82f6;
+      --sw:    230px;
+      --r:     10px;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      background: var(--bg);
       color: var(--text);
-      background: radial-gradient(1200px 800px at 15% -20%, rgba(20, 184, 166, 0.18), transparent 60%),
-        radial-gradient(900px 700px at 90% 10%, rgba(245, 158, 11, 0.2), transparent 60%),
-        linear-gradient(180deg, #0b1120 0%, #0f1720 55%, #101826 100%);
-      min-height: 100vh;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
     }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(148,163,184,.1); padding: 1px 5px; border-radius: 4px; }
 
-    header {
-      padding: 48px 8vw 32px;
-    }
-
-    h1, h2, h3 {
-      font-family: "Space Grotesk", sans-serif;
-      margin: 0 0 12px;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 3vw, 3rem);
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: clamp(1.4rem, 2vw, 2rem);
-      margin-top: 32px;
-    }
-
-    p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    main {
-      padding: 0 8vw 64px;
+    /* ===== SIDEBAR ===== */
+    #sb {
+      width: var(--sw);
+      height: 100vh;
+      background: var(--surf);
+      border-right: 1px solid var(--bd);
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      overflow-y: auto;
+      flex-shrink: 0;
     }
+    .sb-head { padding: 18px 15px 14px; border-bottom: 1px solid var(--bd); }
+    .sb-badge { display: inline-block; background: rgba(245,158,11,.12); color: #f59e0b; border: 1px solid rgba(245,158,11,.3); padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+    .sb-title { font-size: 12px; font-weight: 600; line-height: 1.45; }
+    .sb-sub   { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
-    .hero {
-      display: grid;
-      gap: 24px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      align-items: center;
+    .sb-nav { padding: 8px; }
+    .sb-nav button {
+      display: flex; align-items: center; gap: 8px;
+      width: 100%; padding: 9px 10px; border-radius: 7px;
+      color: var(--muted); background: transparent; border: none;
+      font-size: 12px; font-weight: 500; font-family: inherit;
+      cursor: pointer; transition: background .12s, color .12s;
+      margin-bottom: 2px; text-align: left;
     }
+    .sb-nav button .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; opacity: .4; }
+    .sb-nav button:hover { background: rgba(148,163,184,.07); color: var(--text); }
+    .sb-nav button.active { color: #fbbf24; background: rgba(245,158,11,.08); }
+    .sb-nav button.active .dot { opacity: 1; }
 
-    .hero-card {
-      background: linear-gradient(145deg, rgba(20, 184, 166, 0.15), rgba(15, 23, 32, 0.9));
-      border: 1px solid rgba(148, 163, 184, 0.15);
-      padding: 24px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    .sb-sep { height: 1px; background: var(--bd); margin: 4px 12px; }
+    .sb-sect { padding: 12px 14px 10px; }
+    .sb-lbl { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+
+    /* size toggles */
+    .sz-list { display: flex; flex-direction: column; gap: 5px; }
+    .sz-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 11px; border-radius: 7px; border: 1px solid var(--bd);
+      cursor: pointer; user-select: none; transition: all .13s;
+      -webkit-tap-highlight-color: transparent;
     }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+    .sz-item:hover { border-color: rgba(148,163,184,.25); }
+    .sz-dot   { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .sz-label { font-size: 12px; font-weight: 500; flex: 1; }
+    .sz-cnt   { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+    .sz-item:not(.on) { opacity: .35; }
+    .sz-item[data-s="small"].on   { border-color: rgba(20,184,166,.35);  background: rgba(20,184,166,.06); }
+    .sz-item[data-s="medium"].on  { border-color: rgba(245,158,11,.35);  background: rgba(245,158,11,.06); }
+    .sz-item[data-s="large"].on   { border-color: rgba(239,68,68,.35);   background: rgba(239,68,68,.06); }
+    .sz-item[data-s="small"]  .sz-dot { background: var(--sml); }
+    .sz-item[data-s="medium"] .sz-dot { background: var(--med); }
+    .sz-item[data-s="large"]  .sz-dot { background: var(--lrg); }
+    .sz-all {
+      width: 100%; margin-top: 8px; padding: 5px 10px;
+      background: transparent; border: 1px dashed rgba(148,163,184,.2);
+      border-radius: 6px; color: var(--muted); font-size: 11px;
+      font-family: inherit; cursor: pointer; text-align: center; transition: all .12s;
     }
+    .sz-all:hover { color: var(--text); border-color: rgba(148,163,184,.35); }
 
-    .grid {
-      display: grid;
-      gap: var(--grid-gap);
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    /* metric toggles */
+    .mt-list { display: flex; flex-direction: column; gap: 4px; }
+    .mt-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 10px; border-radius: 6px; border: 1px solid var(--bd);
+      cursor: pointer; user-select: none; transition: all .12s;
     }
+    .mt-item input { display: none; }
+    .mt-chk { width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid rgba(148,163,184,.3); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
+    .mt-item.on .mt-chk { background: rgba(59,130,246,.2); border-color: rgba(59,130,246,.5); color: #93c5fd; }
+    .mt-lbl { font-size: 11px; flex: 1; }
+    .mt-item:not(.on) { opacity: .35; }
 
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      padding: 20px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    .rules { background: rgba(59,130,246,.06); border: 1px solid rgba(59,130,246,.15); border-radius: 7px; padding: 10px 11px; }
+    .rules p { font-size: 10.5px; color: #94a3b8; line-height: 1.65; }
+    .rules strong { color: #93c5fd; }
+
+    /* ===== MAIN (pages) ===== */
+    #main {
+      flex: 1;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      min-width: 0;
     }
-
-    .card.kpi {
-      background: linear-gradient(160deg, rgba(245, 158, 11, 0.12), rgba(19, 27, 38, 0.85));
-      border-color: rgba(245, 158, 11, 0.28);
-    }
-
-    .stat {
-      font-size: 2rem;
-      font-weight: 700;
-      font-family: "Space Grotesk", sans-serif;
-      color: var(--text);
-    }
-
-    .stat-label {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .stat-sub {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 6px;
-      opacity: 0.9;
-    }
-
-    .chart-card {
-      padding: 24px;
-      border-radius: var(--radius);
-      background: linear-gradient(160deg, rgba(15, 23, 32, 0.95), rgba(19, 27, 38, 0.8));
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      box-shadow: var(--shadow);
-    }
-
-    .chart-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 16px;
-    }
-
-    canvas {
-      width: 100% !important;
-      height: 280px !important;
-    }
-
-    .note {
-      font-size: 0.92rem;
-      color: #cbd5f5;
-      background: rgba(59, 130, 246, 0.12);
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(59, 130, 246, 0.3);
-    }
-
-    .section {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 0 0 8px;
-    }
-
-    .tab {
-      appearance: none;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      background: rgba(15, 23, 32, 0.7);
-      color: var(--text);
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .tab:hover {
-      transform: translateY(-1px);
-      background: rgba(20, 184, 166, 0.2);
-    }
-
-    .tab.active {
-      background: rgba(245, 158, 11, 0.2);
-      border-color: rgba(245, 158, 11, 0.6);
-      color: #fbbf24;
-    }
-
-    .tab-panel {
+    .page {
       display: none;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 22px 24px 48px;
     }
+    .page.active { display: block; }
 
-    .tab-panel.active {
-      display: flex;
-    }
+    /* page header */
+    .ph { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .ph-badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+    .ph-title { font-size: 17px; font-weight: 700; }
+    .ph-hint  { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeIn 0.7s ease forwards;
-    }
+    /* kpi row */
+    .krow { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 16px; }
+    .kpi  { background: var(--card); border: 1px solid var(--bd); border-radius: var(--r); padding: 13px 14px; }
+    .kpi .v { font-family: 'JetBrains Mono', monospace; font-size: 21px; font-weight: 700; line-height: 1; margin-bottom: 5px; }
+    .kpi .l { font-size: 11px; color: var(--muted); }
+    .kpi .s { font-size: 10px; color: var(--muted); margin-top: 3px; opacity: .7; }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    /* chart grid */
+    .cg      { display: grid; gap: 12px; }
+    .cg2     { grid-template-columns: repeat(2, 1fr); }
+    .cg3     { grid-template-columns: repeat(3, 1fr); }
+    .cg-auto { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .cc { background: var(--card); border: 1px solid var(--bd); border-radius: var(--r); padding: 15px; }
+    .cc.s2   { grid-column: span 2; }
+    .cc.s3   { grid-column: span 3; }
+    .cc-t    { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+    .cc-sub  { font-size: 10.5px; color: var(--muted); margin-bottom: 11px; }
+    /* Fixed-height chart wrappers */
+    .cw      { position: relative; }
+    .h160    { height: 160px; }
+    .h200    { height: 200px; }
+    .h220    { height: 220px; }
+    .h260    { height: 260px; }
+    .cw canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
 
-    @media (max-width: 700px) {
-      header, main {
-        padding-left: 6vw;
-        padding-right: 6vw;
-      }
+    /* table */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 7px 10px; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--bd); cursor: pointer; user-select: none; white-space: nowrap; }
+    th:hover { color: var(--text); }
+    th.srt   { color: var(--text); }
+    td { padding: 8px 10px; border-bottom: 1px solid rgba(148,163,184,.05); vertical-align: middle; }
+    tr:hover td { background: rgba(148,163,184,.03); }
+    .td-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+    .td-repo { font-size: 12px; font-weight: 500; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .td-bar  { display: flex; align-items: center; }
+    .td-fill { height: 5px; border-radius: 3px; }
 
-      canvas {
-        height: 240px !important;
-      }
+    /* filter bar */
+    .fbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .fbar-lbl { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-right: 2px; }
+    .fbtn { appearance: none; background: transparent; border: 1px solid var(--bd); color: var(--muted); padding: 4px 11px; border-radius: 999px; font-size: 11px; font-weight: 500; cursor: pointer; transition: all .12s; font-family: inherit; }
+    .fbtn:hover  { border-color: rgba(148,163,184,.3); color: var(--text); }
+    .fbtn.active { background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.4); color: #93c5fd; }
+
+    @media (max-width: 860px) {
+      #sb { display: none; }
+      .cg3 { grid-template-columns: 1fr; }
+      .cg2 { grid-template-columns: 1fr; }
+      .cc.s2, .cc.s3 { grid-column: span 1; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <div>
-        <span class="tag">LAB04</span>
-        <h1>Dashboard - Visualizacao de resultados</h1>
-        <p>
-          Abas por RQ, com dados sumarizados gerais na primeira aba.
-          A ideia e contar a historia dos dados com metricas claras e visualizacoes objetivas.
-        </p>
+
+<!-- ===== SIDEBAR ===== -->
+<aside id="sb">
+  <div class="sb-head">
+    <span class="sb-badge">LAB 04</span>
+    <div class="sb-title">Commits &amp; Manutenibilidade</div>
+    <div class="sb-sub">500 repos · Python · OSS</div>
+  </div>
+
+  <nav class="sb-nav">
+    <button class="active" data-page="overview">
+      <span class="dot" style="background:var(--blue)"></span>Visão Geral
+    </button>
+    <button data-page="rq1">
+      <span class="dot" style="background:var(--sml)"></span>RQ1 — Bugs
+    </button>
+    <button data-page="rq2">
+      <span class="dot" style="background:var(--med)"></span>RQ2 — Revisão de PR
+    </button>
+    <button data-page="rq3">
+      <span class="dot" style="background:var(--lrg)"></span>RQ3 — Complexidade
+    </button>
+  </nav>
+
+  <div class="sb-sep"></div>
+
+  <!-- Size filter -->
+  <div class="sb-sect">
+    <div class="sb-lbl">Filtrar por tamanho</div>
+    <div class="sz-list">
+      <div class="sz-item on" data-s="small">
+        <span class="sz-dot"></span>
+        <span class="sz-label">Pequeno</span>
+        <span class="sz-cnt" id="sc-small">—</span>
       </div>
-      <div class="hero-card">
-        <h3>Regras de tamanho</h3>
-        <p><strong>Commits:</strong> small (arquivos &le; 5 e LOC &le; 25), large (arquivos &gt; 5 e LOC &gt; 125), medium (demais).</p>
-        <p><strong>PRs:</strong> small (arquivos &le; 5 e LOC &le; 25), large (arquivos &gt; 5 ou LOC &gt; 125), medium (demais).</p>
+      <div class="sz-item on" data-s="medium">
+        <span class="sz-dot"></span>
+        <span class="sz-label">Médio</span>
+        <span class="sz-cnt" id="sc-medium">—</span>
+      </div>
+      <div class="sz-item on" data-s="large">
+        <span class="sz-dot"></span>
+        <span class="sz-label">Grande</span>
+        <span class="sz-cnt" id="sc-large">—</span>
       </div>
     </div>
-  </header>
+    <button class="sz-all" id="sz-all-btn">Selecionar todos / limpar</button>
+  </div>
 
-  <main>
-    <nav class="tabs" role="tablist" aria-label="Abas do dashboard">
-      <button class="tab active" type="button" data-tab="geral" role="tab" aria-selected="true">Geral</button>
-      <button class="tab" type="button" data-tab="rq1" role="tab" aria-selected="false">RQ1</button>
-      <button class="tab" type="button" data-tab="rq2" role="tab" aria-selected="false">RQ2</button>
-      <button class="tab" type="button" data-tab="rq3" role="tab" aria-selected="false">RQ3</button>
-    </nav>
+  <div class="sb-sep"></div>
 
-    <section class="section fade-in tab-panel active" data-tab="geral" role="tabpanel">
-      <h2>Dados sumarizados gerais</h2>
-      <p>Resumo do universo analisado e das principais distribuicoes por repositorio.</p>
-      <div class="grid">
-        <div class="card">
-          <div class="stat" id="repo-count">-</div>
-          <div class="stat-label">Repositorios</div>
-        </div>
-        <div class="card">
-          <div class="stat" id="commit-count">-</div>
-          <div class="stat-label">Commits analisados</div>
-        </div>
-        <div class="card">
-          <div class="stat" id="pr-count">-</div>
-          <div class="stat-label">PRs analisadas</div>
-        </div>
-        <div class="card">
-          <div class="stat" id="commit-range">-</div>
-          <div class="stat-label">Janela de commits</div>
-        </div>
-        <div class="card">
-          <div class="stat" id="pr-range">-</div>
-          <div class="stat-label">Janela de PRs</div>
+  <!-- RQ2 metric filter -->
+  <div class="sb-sect">
+    <div class="sb-lbl">Métricas — RQ2</div>
+    <div class="mt-list">
+      <label class="mt-item on" data-m="comments">
+        <input type="checkbox" checked />
+        <span class="mt-chk">✓</span><span class="mt-lbl">Comentários</span>
+      </label>
+      <label class="mt-item on" data-m="density">
+        <input type="checkbox" checked />
+        <span class="mt-chk">✓</span><span class="mt-lbl">Densidade</span>
+      </label>
+      <label class="mt-item on" data-m="firstReview">
+        <input type="checkbox" checked />
+        <span class="mt-chk">✓</span><span class="mt-lbl">1ª Revisão</span>
+      </label>
+      <label class="mt-item on" data-m="close">
+        <input type="checkbox" checked />
+        <span class="mt-chk">✓</span><span class="mt-lbl">Fechamento</span>
+      </label>
+    </div>
+  </div>
+
+</aside>
+
+<!-- ===== PAGES ===== -->
+<main id="main">
+
+  <!-- PAGE: OVERVIEW -->
+  <div class="page active" id="page-overview">
+    <div class="ph">
+      <span class="ph-badge" style="background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:#93c5fd;">Overview</span>
+      <span class="ph-title">Dataset · Python Open Source</span>
+    </div>
+
+    <!-- Definition box -->
+    <div style="display:grid;gap:10px;margin-bottom:16px;">
+      <div style="background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.18);border-radius:9px;padding:11px 14px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24;margin-bottom:7px;">Definição de Commits/Pull Requests</div>
+        <div style="font-size:11px;color:#94a3b8;line-height:1.7;">
+          <span style="color:#14b8a6;font-weight:600;">Pequeno</span> — ≤ 5 arquivos <em>e</em> ≤ 25 LOC (mediana: ~6 LOC)<br>
+          <span style="color:#f59e0b;font-weight:600;">Médio</span> — 26–125 LOC <em>e</em> ≤ 5 arquivos (mediana: ~48 LOC)<br>
+          <span style="color:#ef4444;font-weight:600;">Grande</span> — &gt; 5 arquivos <em>ou</em> &gt; 125 LOC (mediana: ~580 LOC)
         </div>
       </div>
-      <div class="grid">
-        <div class="card kpi">
-          <div class="stat" id="kpi-top-stars">-</div>
-          <div class="stat-label">Stars no top repositorio</div>
-          <div class="stat-sub" id="kpi-top-stars-repo">-</div>
-        </div>
-        <div class="card kpi">
-          <div class="stat" id="kpi-top-commits">-</div>
-          <div class="stat-label">Commits no top repositorio</div>
-          <div class="stat-sub" id="kpi-top-commits-repo">-</div>
-        </div>
-        <div class="card kpi">
-          <div class="stat" id="kpi-bugfix-rate">-</div>
-          <div class="stat-label">Taxa geral de correcoes</div>
-          <div class="stat-sub">proxy: is_bug_fix</div>
-        </div>
-        <div class="card kpi">
-          <div class="stat" id="kpi-revert-rate">-</div>
-          <div class="stat-label">Taxa geral de reverts</div>
-        </div>
-        <div class="card kpi">
-          <div class="stat" id="kpi-small-share">-</div>
-          <div class="stat-label">Participacao de commits pequenos</div>
-        </div>
+    </div>
+
+    <div class="krow" id="kpi-overview"></div>
+
+    <div class="cg cg3" style="margin-bottom:12px;">
+      <div class="cc">
+        <div class="cc-t">Stars por faixa</div>
+        <div class="cc-sub">Distribuição dos 500 repositórios</div>
+        <div class="cw h200"><canvas id="c-stars"></canvas></div>
       </div>
-      <div class="grid">
-        <div class="chart-card">
-          <h3>Distribuicao de estrelas (repositorios)</h3>
-          <canvas id="chart-stars"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Top repositorios por estrelas</h3>
-          <canvas id="chart-top-stars"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Top repositorios por numero de commits</h3>
-          <canvas id="chart-top-commits"></canvas>
-        </div>
+      <div class="cc s2">
+        <div class="cc-t">Top 10 repositórios por stars</div>
+        <div class="cc-sub">Mais populares no dataset</div>
+        <div class="cw h200"><canvas id="c-top-stars"></canvas></div>
       </div>
-      <div class="note">
-        Se os graficos nao carregarem ao abrir o arquivo direto, abra um servidor local (ex: <code>python -m http.server</code>)
-        na pasta do projeto e acesse <code>http://localhost:8000</code>.
+    </div>
+
+    <div class="cc">
+      <div class="cc-t" style="margin-bottom:10px;">Repositórios — Tabela interativa</div>
+      <div class="fbar">
+        <span class="fbar-lbl">Ordenar:</span>
+        <button class="fbtn active" data-sort="stars">⭐ Stars</button>
+        <button class="fbtn" data-sort="commits">Commits</button>
+        <button class="fbtn" data-sort="contributors">Contribuidores</button>
+        <span class="fbar-lbl" style="margin-left:10px;">Mostrar:</span>
+        <button class="fbtn active" data-topn="10">10</button>
+        <button class="fbtn" data-topn="20">20</button>
+        <button class="fbtn" data-topn="0">Todos</button>
       </div>
-    </section>
-
-    <section class="section fade-in tab-panel" data-tab="rq1" role="tabpanel">
-      <h2>RQ1 - Tamanho do commit x ocorrencia de bugs</h2>
-      <p>Q1: Qual a relacao entre o tamanho do commit e a ocorrencia de bugs?</p>
-      <div class="note">
-        Nesta base, usamos <strong>is_bug_fix</strong> como proxy de ocorrencia de bugs (commits de correcao).
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Repositório</th>
+              <th data-col="stars">Stars</th>
+              <th data-col="commits">Commits (5a)</th>
+              <th data-col="contributors">Contribs.</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="repos-tbody"></tbody>
+        </table>
       </div>
-      <div class="grid">
-        <div class="chart-card">
-          <h3>Distribuicao de commits por classe</h3>
-          <canvas id="chart-q1-distribution"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Com correcao x sem correcao por classe</h3>
-          <canvas id="chart-q1-stacked"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Taxa de commits de correcao por classe</h3>
-          <canvas id="chart-q1-rate"></canvas>
-        </div>
+    </div>
+  </div>
+
+  <!-- PAGE: RQ1 -->
+  <div class="page" id="page-rq1">
+    <div class="ph">
+      <span class="ph-badge" style="background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:#5eead4;">RQ1</span>
+      <span class="ph-title">Tamanho do commit vs. Ocorrência de bugs</span>
+    </div>
+    <p class="ph-hint">Proxy: <code>is_bug_fix</code> via palavras-chave na mensagem do commit. Use o filtro lateral para comparar classes.</p>
+
+    <div class="krow" id="kpi-rq1"></div>
+
+    <div class="cg cg3">
+      <div class="cc">
+        <div class="cc-t">Volume por classe</div>
+        <div class="cc-sub">Distribuição total de commits</div>
+        <div class="cw h220"><canvas id="c-q1-dist"></canvas></div>
       </div>
-    </section>
-
-    <section class="section fade-in tab-panel" data-tab="rq2" role="tabpanel">
-      <h2>RQ2 - Tamanho de PR x complexidade de revisao</h2>
-      <p>Q2: O tamanho do pull request influencia a complexidade da revisao de codigo?</p>
-      <div class="grid">
-        <div class="chart-card">
-          <h3>Mediana de comentarios (volume)</h3>
-          <canvas id="chart-q2-comments"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Mediana de densidade de comentarios (comentarios/LOC)</h3>
-          <canvas id="chart-q2-density"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Mediana de tempo ate primeira revisao (min)</h3>
-          <canvas id="chart-q2-first-review"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Mediana de tempo ate fechamento (h)</h3>
-          <canvas id="chart-q2-close"></canvas>
-        </div>
+      <div class="cc">
+        <div class="cc-t">Bug fix vs. Non-bug fix</div>
+        <div class="cc-sub">Stacked por classe de tamanho</div>
+        <div class="cw h220"><canvas id="c-q1-stack"></canvas></div>
       </div>
-    </section>
-
-    <section class="section fade-in tab-panel" data-tab="rq3" role="tabpanel">
-      <h2>RQ3 - Tamanho de commit x manutenibilidade</h2>
-      <p>Q3: Qual a relacao do tamanho dos commits com a manutenibilidade do codigo?</p>
-      <div class="grid">
-        <div class="chart-card">
-          <h3>Taxa de reverts por classe</h3>
-          <canvas id="chart-q3-reverts"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Mediana de CC medio por classe</h3>
-          <canvas id="chart-q3-cc-mean"></canvas>
-        </div>
-        <div class="chart-card">
-          <h3>Mediana de densidade de CC (CC/LOC)</h3>
-          <canvas id="chart-q3-cc-density"></canvas>
-        </div>
+      <div class="cc">
+        <div class="cc-t">Taxa de bug fix (%)</div>
+        <div class="cc-sub">Commits de correção / total</div>
+        <div class="cw h220"><canvas id="c-q1-rate"></canvas></div>
       </div>
-    </section>
+    </div>
+  </div>
 
-  </main>
+  <!-- PAGE: RQ2 -->
+  <div class="page" id="page-rq2">
+    <div class="ph">
+      <span class="ph-badge" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:#fbbf24;">RQ2</span>
+      <span class="ph-title">Tamanho de PR vs. Complexidade de revisão</span>
+    </div>
+    <p class="ph-hint">Métricas de revisão por classe de PR. Ative/desative métricas no painel lateral.</p>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const SIZE_ORDER = ["small", "medium", "large"];
-    const COLORS = {
-      small: "#14b8a6",
-      medium: "#f59e0b",
-      large: "#ef4444",
-    };
+    <div class="krow" id="kpi-rq2"></div>
 
-    const charts = [];
+    <div class="cg cg2" id="rq2-grid">
+      <div class="cc" id="cc-comments">
+        <div class="cc-t">Comentários (mediana)</div>
+        <div class="cc-sub">Volume de comentários por classe</div>
+        <div class="cw h220"><canvas id="c-q2-comments"></canvas></div>
+      </div>
+      <div class="cc" id="cc-density">
+        <div class="cc-t">Densidade de comentários (mediana)</div>
+        <div class="cc-sub">Comentários / LOC</div>
+        <div class="cw h220"><canvas id="c-q2-density"></canvas></div>
+      </div>
+      <div class="cc" id="cc-firstReview">
+        <div class="cc-t">Tempo até 1ª revisão (mediana)</div>
+        <div class="cc-sub">Em minutos</div>
+        <div class="cw h220"><canvas id="c-q2-first-review"></canvas></div>
+      </div>
+      <div class="cc" id="cc-close">
+        <div class="cc-t">Tempo até fechamento (mediana)</div>
+        <div class="cc-sub">Em horas</div>
+        <div class="cw h220"><canvas id="c-q2-close"></canvas></div>
+      </div>
+    </div>
+  </div>
 
-    const formatInt = new Intl.NumberFormat("pt-BR");
-    const formatPercent = new Intl.NumberFormat("pt-BR", {
-      style: "percent",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
+  <!-- PAGE: RQ3 -->
+  <div class="page" id="page-rq3">
+    <div class="ph">
+      <span class="ph-badge" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#fca5a5;">RQ3</span>
+      <span class="ph-title">Tamanho do commit vs. Manutenibilidade</span>
+    </div>
+    <p class="ph-hint">Reverts e complexidade ciclomática (CC) como proxies de manutenibilidade.</p>
 
-    function toLabel(size) {
-      return size === "small" ? "Pequeno" : size === "medium" ? "Medio" : "Grande";
-    }
+    <div class="krow" id="kpi-rq3"></div>
 
-    function formatDateRange(range) {
-      if (!range || !range.min || !range.max) return "-";
-      const min = new Date(range.min).toLocaleDateString("pt-BR");
-      const max = new Date(range.max).toLocaleDateString("pt-BR");
-      return `${min} - ${max}`;
-    }
+    <div class="cg cg3" style="margin-bottom:12px;">
+      <div class="cc">
+        <div class="cc-t">Taxa de reverts (%)</div>
+        <div class="cc-sub">Commits revertidos / total</div>
+        <div class="cw h220"><canvas id="c-q3-reverts"></canvas></div>
+      </div>
+      <div class="cc">
+        <div class="cc-t">CC médio — mediana</div>
+        <div class="cc-sub">Complexidade ciclomática média por commit</div>
+        <div class="cw h220"><canvas id="c-q3-cc-mean"></canvas></div>
+      </div>
+      <div class="cc">
+        <div class="cc-t">CC máximo — mediana</div>
+        <div class="cc-sub">Pico de CC por commit</div>
+        <div class="cw h220"><canvas id="c-q3-cc-max"></canvas></div>
+      </div>
+    </div>
 
-    async function loadData() {
-      const response = await fetch("./data/processed/dashboard_data.json");
-      if (!response.ok) {
-        throw new Error("Nao foi possivel carregar o JSON de dados.");
-      }
-      return response.json();
-    }
+    <div class="cg cg2">
+      <div class="cc s2">
+        <div class="cc-t">Densidade de CC — mediana (CC / LOC)</div>
+        <div class="cc-sub">Complexidade ciclomática relativa ao tamanho do commit</div>
+        <div class="cw h200"><canvas id="c-q3-cc-density"></canvas></div>
+      </div>
+    </div>
+  </div>
 
-    function barChart(ctx, labels, values, color, suffix = "", options = {}) {
-      const valueAxis = options.indexAxis === "y" ? "x" : "y";
-      return new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels,
-          datasets: [
-            {
-              data: values,
-              backgroundColor: color,
-              borderRadius: 8,
-            },
-          ],
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+/* ===================== CONSTANTS ===================== */
+const S_LBL = { small:'Pequeno', medium:'Médio', large:'Grande' };
+const S_CLR = { small:'#14b8a6', medium:'#f59e0b', large:'#ef4444' };
+const S_BG2 = { small:'rgba(20,184,166,.45)', medium:'rgba(245,158,11,.45)', large:'rgba(239,68,68,.45)' };
+const fmtN = new Intl.NumberFormat('pt-BR');
+const fmtK = v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'k' : String(v);
+const pct  = v => (v * 100).toFixed(2) + '%';
+
+/* ===================== STATE ===================== */
+let RAW = null;
+let activeSizes   = new Set(['small','medium','large']);
+let activeMetrics = new Set(['comments','density','firstReview','close']);
+let tableSort = 'stars';
+let tableTopN = 10;
+let currentPage = 'overview';
+const CI = {};
+
+/* ===================== CHART HELPERS ===================== */
+const TICK = { color:'#60748a', font:{ size:11 } };
+const GRID = { color:'rgba(148,163,184,0.07)' };
+const BDR  = { color:'rgba(148,163,184,0.1)' };
+
+function sc(ex) {
+  ex = ex || {};
+  return {
+    x: { ticks:TICK, grid:GRID, border:BDR, ...(ex.x||{}) },
+    y: { ticks:TICK, grid:GRID, border:BDR, ...(ex.y||{}) }
+  };
+}
+
+function destroy(id) { if (CI[id]) { CI[id].destroy(); delete CI[id]; } }
+
+function mkBar(id, labels, datasets, opts) {
+  opts = opts || {};
+  destroy(id);
+  var el = document.getElementById(id);
+  if (!el) return;
+  CI[id] = new Chart(el.getContext('2d'), {
+    type: 'bar',
+    data: { labels: labels, datasets: datasets },
+    options: {
+      maintainAspectRatio: false,
+      animation: { duration: 280 },
+      plugins: {
+        legend: {
+          display: datasets.length > 1,
+          labels: { color:'#94a3b8', font:{ size:11 }, boxWidth:10, padding:10 }
         },
-        options: {
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: (context) => `${context.parsed[valueAxis]}${suffix}`,
-              },
-            },
-          },
-          indexAxis: options.indexAxis || "x",
-          scales: {
-            x: { ticks: { color: "#cbd5f5" }, grid: { color: "rgba(148, 163, 184, 0.08)" } },
-            y: { ticks: { color: "#cbd5f5" }, grid: { color: "rgba(148, 163, 184, 0.08)" } },
-          },
-        },
-      });
+        tooltip: opts.tip ? { callbacks: { label: opts.tip } } : {}
+      },
+      scales: sc(opts.sc),
+      indexAxis: opts.idx || 'x'
     }
+  });
+}
 
-    function lineChart(ctx, labels, values, color, suffix = "") {
-      return new Chart(ctx, {
-        type: "line",
-        data: {
-          labels,
-          datasets: [
-            {
-              data: values,
-              borderColor: color,
-              backgroundColor: "rgba(15, 23, 32, 0.2)",
-              tension: 0.35,
-              fill: true,
-              pointRadius: 4,
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: (context) => `${context.parsed.y}${suffix}`,
-              },
-            },
-          },
-          scales: {
-            x: { ticks: { color: "#cbd5f5" }, grid: { color: "rgba(148, 163, 184, 0.08)" } },
-            y: { ticks: { color: "#cbd5f5" }, grid: { color: "rgba(148, 163, 184, 0.08)" } },
-          },
-        },
-      });
+function mkLine(id, labels, datasets, opts) {
+  opts = opts || {};
+  destroy(id);
+  var el = document.getElementById(id);
+  if (!el) return;
+  CI[id] = new Chart(el.getContext('2d'), {
+    type: 'line',
+    data: { labels: labels, datasets: datasets },
+    options: {
+      maintainAspectRatio: false,
+      animation: { duration: 280 },
+      plugins: {
+        legend: { display: false },
+        tooltip: opts.tip ? { callbacks: { label: opts.tip } } : {}
+      },
+      scales: sc(opts.sc)
     }
+  });
+}
 
-    function doughnutChart(ctx, labels, values, colors) {
-      return new Chart(ctx, {
-        type: "doughnut",
-        data: {
-          labels,
-          datasets: [
-            {
-              data: values,
-              backgroundColor: colors,
-              borderWidth: 0,
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: { labels: { color: "#cbd5f5" } },
-          },
-          cutout: "55%",
-        },
-      });
-    }
-
-    function stackedChart(ctx, labels, datasets) {
-      return new Chart(ctx, {
-        type: "bar",
-        data: { labels, datasets },
-        options: {
-          plugins: { legend: { labels: { color: "#cbd5f5" } } },
-          scales: {
-            x: { stacked: true, ticks: { color: "#cbd5f5" }, grid: { color: "rgba(148, 163, 184, 0.08)" } },
-            y: { stacked: true, ticks: { color: "#cbd5f5" }, grid: { color: "rgba(148, 163, 184, 0.08)" } },
-          },
-        },
-      });
-    }
-
-    function percentify(value) {
-      if (value === null || value === undefined) return 0;
-      return Math.round(value * 10000) / 100;
-    }
-
-    function ensureNumber(value) {
-      if (value === null || value === undefined) return 0;
-      return value;
-    }
-
-    loadData()
-      .then((data) => {
-        document.getElementById("repo-count").textContent = formatInt.format(data.dataset.repo_count);
-        document.getElementById("commit-count").textContent = formatInt.format(data.dataset.commit_count);
-        document.getElementById("pr-count").textContent = formatInt.format(data.dataset.pr_count);
-        document.getElementById("commit-range").textContent = formatDateRange(data.dataset.commit_date_range);
-        document.getElementById("pr-range").textContent = formatDateRange(data.dataset.pr_date_range);
-
-        const totalCommits = data.q1.size_class_counts.reduce((sum, item) => sum + item.total, 0);
-        const totalBugFix = data.q1.size_class_counts.reduce((sum, item) => sum + item.bug_fix, 0);
-        const totalReverts = data.q3.size_class_reverts.reduce((sum, item) => sum + item.revert, 0);
-        const totalRevertBase = data.q3.size_class_reverts.reduce((sum, item) => sum + item.total, 0);
-        const smallBucket = data.q1.size_class_counts.find((item) => item.size === "small");
-        const smallShare = smallBucket && totalCommits ? smallBucket.total / totalCommits : 0;
-
-        const topStarsItem = data.dataset.top_repos_by_stars[0];
-        if (topStarsItem) {
-          document.getElementById("kpi-top-stars").textContent = formatInt.format(topStarsItem.stars);
-          document.getElementById("kpi-top-stars-repo").textContent = topStarsItem.repo;
+function mkDoughnut(id, labels, vals, colors) {
+  destroy(id);
+  var el = document.getElementById(id);
+  if (!el) return;
+  CI[id] = new Chart(el.getContext('2d'), {
+    type: 'doughnut',
+    data: { labels: labels, datasets: [{ data: vals, backgroundColor: colors, borderWidth: 0 }] },
+    options: {
+      maintainAspectRatio: false,
+      animation: { duration: 280 },
+      plugins: {
+        legend: {
+          display: true, position: 'bottom',
+          labels: { color:'#94a3b8', font:{ size:11 }, boxWidth:10, padding:8 }
         }
-
-        const topCommitsItem = data.dataset.top_repos_by_commits[0];
-        if (topCommitsItem) {
-          document.getElementById("kpi-top-commits").textContent = formatInt.format(topCommitsItem.commits);
-          document.getElementById("kpi-top-commits-repo").textContent = topCommitsItem.repo;
-        }
-
-        const bugFixRate = totalCommits ? totalBugFix / totalCommits : 0;
-        const revertRate = totalRevertBase ? totalReverts / totalRevertBase : 0;
-
-        document.getElementById("kpi-bugfix-rate").textContent = formatPercent.format(bugFixRate);
-        document.getElementById("kpi-revert-rate").textContent = formatPercent.format(revertRate);
-        document.getElementById("kpi-small-share").textContent = formatPercent.format(smallShare);
-
-        const starsLabels = data.dataset.stars_hist.map((item) => item.bin);
-        const starsValues = data.dataset.stars_hist.map((item) => item.count);
-        charts.push(barChart(document.getElementById("chart-stars"), starsLabels, starsValues, "#14b8a6"));
-
-        const topStars = data.dataset.top_repos_by_stars.slice(0, 8);
-        charts.push(barChart(
-          document.getElementById("chart-top-stars"),
-          topStars.map((item) => item.repo),
-          topStars.map((item) => item.stars),
-          "#f59e0b",
-          "",
-          { indexAxis: "y" }
-        ));
-
-        const topCommits = data.dataset.top_repos_by_commits.slice(0, 8);
-        charts.push(barChart(
-          document.getElementById("chart-top-commits"),
-          topCommits.map((item) => item.repo),
-          topCommits.map((item) => item.commits),
-          "#38bdf8"
-        ));
-
-        const q1Labels = data.q1.size_class_counts.map((item) => toLabel(item.size));
-        const q1BugFix = data.q1.size_class_counts.map((item) => item.bug_fix);
-        const q1NonBugFix = data.q1.size_class_counts.map((item) => item.non_bug_fix);
-
-        const q1Totals = data.q1.size_class_counts.map((item) => item.total);
-        const q1Colors = data.q1.size_class_counts.map((item) => COLORS[item.size]);
-        charts.push(doughnutChart(
-          document.getElementById("chart-q1-distribution"),
-          q1Labels,
-          q1Totals,
-          q1Colors
-        ));
-
-        charts.push(stackedChart(document.getElementById("chart-q1-stacked"), q1Labels, [
-          {
-            label: "Com correcao",
-            data: q1BugFix,
-            backgroundColor: "#f59e0b",
-            borderRadius: 8,
-          },
-          {
-            label: "Sem correcao",
-            data: q1NonBugFix,
-            backgroundColor: "#14b8a6",
-            borderRadius: 8,
-          },
-        ]));
-
-        const q1Rates = data.q1.size_class_counts.map((item) => percentify(item.bug_fix_rate));
-        charts.push(lineChart(document.getElementById("chart-q1-rate"), q1Labels, q1Rates, "#ef4444", "%"));
-
-        const q2Labels = data.q2.size_class_metrics.map((item) => toLabel(item.size));
-        charts.push(barChart(
-          document.getElementById("chart-q2-comments"),
-          q2Labels,
-          data.q2.size_class_metrics.map((item) => ensureNumber(item.comments_median)),
-          "#38bdf8"
-        ));
-
-        charts.push(barChart(
-          document.getElementById("chart-q2-density"),
-          q2Labels,
-          data.q2.size_class_metrics.map((item) => ensureNumber(item.comments_density_median)),
-          "#06b6d4"
-        ));
-
-        charts.push(lineChart(
-          document.getElementById("chart-q2-first-review"),
-          q2Labels,
-          data.q2.size_class_metrics.map((item) => ensureNumber(item.first_review_median_min)),
-          "#22c55e"
-        ));
-
-        charts.push(lineChart(
-          document.getElementById("chart-q2-close"),
-          q2Labels,
-          data.q2.size_class_metrics.map((item) => ensureNumber(item.close_median_hours)),
-          "#f97316"
-        ));
-
-        const q3Labels = data.q3.size_class_reverts.map((item) => toLabel(item.size));
-        charts.push(barChart(
-          document.getElementById("chart-q3-reverts"),
-          q3Labels,
-          data.q3.size_class_reverts.map((item) => percentify(item.revert_rate)),
-          "#ef4444",
-          "%"
-        ));
-
-        charts.push(barChart(
-          document.getElementById("chart-q3-cc-mean"),
-          q3Labels,
-          data.q3.size_class_complexity.map((item) => ensureNumber(item.cc_mean_median)),
-          "#14b8a6"
-        ));
-
-        charts.push(lineChart(
-          document.getElementById("chart-q3-cc-density"),
-          q3Labels,
-          data.q3.size_class_complexity.map((item) => ensureNumber(item.cc_density_median)),
-          "#f59e0b"
-        ));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    const tabs = document.querySelectorAll(".tab");
-    const panels = document.querySelectorAll(".tab-panel");
-
-    function setActiveTab(tabId) {
-      tabs.forEach((tab) => {
-        const isActive = tab.dataset.tab === tabId;
-        tab.classList.toggle("active", isActive);
-        tab.setAttribute("aria-selected", String(isActive));
-      });
-
-      panels.forEach((panel) => {
-        panel.classList.toggle("active", panel.dataset.tab === tabId);
-      });
-
-      requestAnimationFrame(() => {
-        charts.forEach((chart) => chart.resize());
-      });
+      },
+      cutout: '60%'
     }
+  });
+}
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => setActiveTab(tab.dataset.tab));
+/* ===================== OVERVIEW ===================== */
+function renderOverview() {
+  var d = RAW.dataset;
+  var totC  = RAW.q1.size_class_counts.reduce(function(s,i){ return s+i.total; }, 0);
+  var totBF = RAW.q1.size_class_counts.reduce(function(s,i){ return s+i.bug_fix; }, 0);
+  var totR  = RAW.q3.size_class_reverts.reduce(function(s,i){ return s+i.revert; }, 0);
+  var totRB = RAW.q3.size_class_reverts.reduce(function(s,i){ return s+i.total; }, 0);
+  var sml   = RAW.q1.size_class_counts.find(function(i){ return i.size==='small'; });
+
+  var kpis = [
+    { v: fmtK(d.repo_count),   l:'Repositórios',  c:'var(--blue)', s:'' },
+    { v: fmtK(d.commit_count), l:'Commits',         c:'var(--sml)',  s:'' },
+    { v: fmtK(d.pr_count),     l:'Pull Requests',   c:'var(--med)',  s:'' }
+  ];
+  ['small','medium','large'].forEach(function(s) {
+    var item = RAW.q1.size_class_counts.find(function(i){ return i.size===s; });
+    kpis.push({ v: pct(item.total/totC), l:'Commits '+S_LBL[s], c: S_CLR[s], s: fmtK(item.total)+' commits' });
+  });
+  document.getElementById('kpi-overview').innerHTML = kpis.map(function(k) {
+    return '<div class="kpi" style="border-left:3px solid '+k.c+'">' +
+      '<div class="v" style="color:'+k.c+'">'+k.v+'</div>' +
+      '<div class="l">'+k.l+'</div>' +
+      (k.s ? '<div class="s">'+k.s+'</div>' : '') +
+      '</div>';
+  }).join('');
+
+  mkBar('c-stars',
+    d.stars_hist.map(function(i){ return i.bin; }),
+    [{ data: d.stars_hist.map(function(i){ return i.count; }), backgroundColor:'#14b8a6', borderRadius:5 }]
+  );
+
+  var top10 = d.top_repos_by_stars.slice(0, 10);
+  mkBar('c-top-stars',
+    top10.map(function(i){ return i.repo.split('/')[1] || i.repo; }),
+    [{ data: top10.map(function(i){ return i.stars; }), backgroundColor:'#f59e0b', borderRadius:4, barThickness:12 }],
+    { idx:'y' }
+  );
+
+  RAW.q1.size_class_counts.forEach(function(i) {
+    var el = document.getElementById('sc-'+i.size);
+    if (el) el.textContent = fmtK(i.total);
+  });
+
+  renderTable();
+}
+
+/* ===================== TABLE ===================== */
+function renderTable() {
+  var src = RAW.dataset.top_repos_by_stars.map(function(r) {
+    return { repo:r.repo, stars:r.stars, commits:r.commits_5_years, contributors:r.contributors };
+  });
+  src.sort(function(a,b){ return b[tableSort]-a[tableSort]; });
+  var rows = tableTopN === 0 ? src : src.slice(0, tableTopN);
+  var maxV = Math.max.apply(null, src.map(function(r){ return r[tableSort]; }));
+  var cc = { stars:'#f59e0b', commits:'#14b8a6', contributors:'#3b82f6' }[tableSort] || '#f59e0b';
+
+  document.getElementById('repos-tbody').innerHTML = rows.map(function(r, i) {
+    return '<tr>' +
+      '<td style="color:var(--muted);width:26px;">'+(i+1)+'</td>' +
+      '<td class="td-repo" title="'+r.repo+'">'+r.repo+'</td>' +
+      '<td class="td-mono">'+fmtN.format(r.stars)+'</td>' +
+      '<td class="td-mono">'+fmtN.format(r.commits)+'</td>' +
+      '<td class="td-mono">'+fmtN.format(r.contributors)+'</td>' +
+      '<td style="width:90px;"><div class="td-bar"><div class="td-fill" style="width:'+Math.round(r[tableSort]/maxV*82)+'px;background:'+cc+'"></div></div></td>' +
+      '</tr>';
+  }).join('');
+
+  document.querySelectorAll('[data-sort]').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.sort === tableSort);
+  });
+  document.querySelectorAll('th[data-col]').forEach(function(th) {
+    var isSorted = th.dataset.col === tableSort;
+    th.classList.toggle('srt', isSorted);
+    th.textContent = { stars:'Stars', commits:'Commits (5a)', contributors:'Contribs.' }[th.dataset.col] + (isSorted ? ' ▼' : ' ↕');
+  });
+}
+
+/* ===================== RQ1 ===================== */
+function renderRQ1() {
+  var f   = RAW.q1.size_class_counts.filter(function(i){ return activeSizes.has(i.size); });
+  var lbl = f.map(function(i){ return S_LBL[i.size]; });
+  var clr = f.map(function(i){ return S_CLR[i.size]; });
+
+  document.getElementById('kpi-rq1').innerHTML = f.map(function(i) {
+    return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
+      '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.bug_fix_rate)+'</div>' +
+      '<div class="l">Bug fix · '+S_LBL[i.size]+'</div>' +
+      '<div class="s">'+fmtK(i.total)+' commits</div>' +
+      '</div>';
+  }).join('');
+
+  mkDoughnut('c-q1-dist', lbl, f.map(function(i){ return i.total; }), clr);
+
+  mkBar('c-q1-stack', lbl, [
+    { label:'Bug Fix',     data: f.map(function(i){ return i.bug_fix; }),     backgroundColor: clr,  borderRadius:5 },
+    { label:'Non-Bug Fix', data: f.map(function(i){ return i.non_bug_fix; }), backgroundColor: f.map(function(i){ return S_BG2[i.size]; }), borderRadius:5 }
+  ], { sc: { x:{ stacked:true }, y:{ stacked:true } } });
+
+  mkBar('c-q1-rate', lbl,
+    [{ data: f.map(function(i){ return parseFloat((i.bug_fix_rate*100).toFixed(2)); }), backgroundColor: clr, borderRadius:5 }],
+    { tip: function(ctx){ return ctx.parsed.y.toFixed(2)+'%'; } }
+  );
+}
+
+/* ===================== RQ2 ===================== */
+function renderRQ2() {
+  var f   = RAW.q2.size_class_metrics.filter(function(i){ return activeSizes.has(i.size); });
+  var lbl = f.map(function(i){ return S_LBL[i.size]; });
+  var clr = f.map(function(i){ return S_CLR[i.size]; });
+
+  document.getElementById('kpi-rq2').innerHTML = f.map(function(i) {
+    return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
+      '<div class="v" style="color:'+S_CLR[i.size]+'">'+i.close_median_hours.toFixed(1)+'h</div>' +
+      '<div class="l">Fechamento · '+S_LBL[i.size]+'</div>' +
+      '<div class="s">'+fmtK(i.pr_count)+' PRs</div>' +
+      '</div>';
+  }).join('');
+
+  var mc = { comments:'cc-comments', density:'cc-density', firstReview:'cc-firstReview', close:'cc-close' };
+  Object.keys(mc).forEach(function(k) {
+    var el = document.getElementById(mc[k]);
+    if (el) el.style.display = activeMetrics.has(k) ? '' : 'none';
+  });
+
+  if (activeMetrics.has('comments'))
+    mkBar('c-q2-comments', lbl,
+      [{ data: f.map(function(i){ return i.comments_median; }), backgroundColor: clr, borderRadius:5 }]
+    );
+  if (activeMetrics.has('density'))
+    mkBar('c-q2-density', lbl,
+      [{ data: f.map(function(i){ return i.comments_density_median; }), backgroundColor: clr, borderRadius:5 }],
+      { tip: function(ctx){ return ctx.parsed.y.toFixed(4); } }
+    );
+  if (activeMetrics.has('firstReview'))
+    mkLine('c-q2-first-review', lbl, [{
+      data: f.map(function(i){ return i.first_review_median_min; }),
+      borderColor:'#22c55e', backgroundColor:'rgba(34,197,94,.08)',
+      pointBackgroundColor: clr, pointRadius:6, tension:.3, fill:true
+    }], { tip: function(ctx){ return ctx.parsed.y.toFixed(2)+' min'; } });
+  if (activeMetrics.has('close'))
+    mkLine('c-q2-close', lbl, [{
+      data: f.map(function(i){ return i.close_median_hours; }),
+      borderColor:'#f97316', backgroundColor:'rgba(249,115,22,.08)',
+      pointBackgroundColor: clr, pointRadius:6, tension:.3, fill:true
+    }], { tip: function(ctx){ return ctx.parsed.y.toFixed(2)+'h'; } });
+}
+
+/* ===================== RQ3 ===================== */
+function renderRQ3() {
+  var fR  = RAW.q3.size_class_reverts.filter(function(i){ return activeSizes.has(i.size); });
+  var fCC = RAW.q3.size_class_complexity.filter(function(i){ return activeSizes.has(i.size); });
+  var rLbl = fR.map(function(i){ return S_LBL[i.size]; });
+  var rClr = fR.map(function(i){ return S_CLR[i.size]; });
+  var cLbl = fCC.map(function(i){ return S_LBL[i.size]; });
+  var cClr = fCC.map(function(i){ return S_CLR[i.size]; });
+
+  document.getElementById('kpi-rq3').innerHTML = fR.map(function(i) {
+    return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
+      '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.revert_rate)+'</div>' +
+      '<div class="l">Reverts · '+S_LBL[i.size]+'</div>' +
+      '<div class="s">'+fmtK(i.revert)+' reverts</div>' +
+      '</div>';
+  }).join('');
+
+  mkBar('c-q3-reverts', rLbl,
+    [{ data: fR.map(function(i){ return parseFloat((i.revert_rate*100).toFixed(2)); }), backgroundColor: rClr, borderRadius:5 }],
+    { tip: function(ctx){ return ctx.parsed.y.toFixed(2)+'%'; } }
+  );
+  mkBar('c-q3-cc-mean', cLbl,
+    [{ data: fCC.map(function(i){ return i.cc_mean_median; }), backgroundColor: cClr, borderRadius:5 }]
+  );
+  mkBar('c-q3-cc-max', cLbl,
+    [{ data: fCC.map(function(i){ return i.cc_max_median; }), backgroundColor: cClr, borderRadius:5 }]
+  );
+  mkLine('c-q3-cc-density', cLbl, [{
+    data: fCC.map(function(i){ return i.cc_density_median; }),
+    borderColor:'#f59e0b', backgroundColor:'rgba(245,158,11,.08)',
+    pointBackgroundColor: cClr, pointRadius:6, tension:.3, fill:true
+  }], { tip: function(ctx){ return ctx.parsed.y.toFixed(4); } });
+}
+
+/* ===================== PAGE NAVIGATION ===================== */
+var renderMap = {
+  overview: renderOverview,
+  rq1: renderRQ1,
+  rq2: renderRQ2,
+  rq3: renderRQ3
+};
+
+function navigateTo(id) {
+  // hide all pages
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  // show target
+  var target = document.getElementById('page-'+id);
+  if (target) target.classList.add('active');
+  // update nav buttons
+  document.querySelectorAll('.sb-nav button').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.page === id);
+  });
+  currentPage = id;
+  // render charts for this page
+  if (renderMap[id]) renderMap[id]();
+}
+
+document.querySelectorAll('.sb-nav button').forEach(function(btn) {
+  btn.addEventListener('click', function() { navigateTo(btn.dataset.page); });
+});
+
+/* ===================== SIZE FILTER ===================== */
+function syncSzUI() {
+  document.querySelectorAll('.sz-item').forEach(function(t) {
+    t.classList.toggle('on', activeSizes.has(t.dataset.s));
+  });
+  var btn = document.getElementById('sz-all-btn');
+  btn.textContent = activeSizes.size === 3 ? 'Limpar seleção' : 'Selecionar todos';
+}
+
+document.querySelectorAll('.sz-item').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var s = el.dataset.s;
+    if (activeSizes.has(s)) {
+      if (activeSizes.size === 1) return; // must keep at least one
+      activeSizes.delete(s);
+    } else {
+      activeSizes.add(s);
+    }
+    syncSzUI();
+    if (renderMap[currentPage]) renderMap[currentPage]();
+  });
+});
+
+document.getElementById('sz-all-btn').addEventListener('click', function() {
+  activeSizes = activeSizes.size === 3 ? new Set(['small']) : new Set(['small','medium','large']);
+  syncSzUI();
+  if (renderMap[currentPage]) renderMap[currentPage]();
+});
+
+/* ===================== METRIC FILTER ===================== */
+document.querySelectorAll('.mt-item').forEach(function(el) {
+  el.addEventListener('click', function() {
+    var m = el.dataset.m;
+    if (activeMetrics.has(m)) {
+      if (activeMetrics.size === 1) return;
+      activeMetrics.delete(m);
+    } else {
+      activeMetrics.add(m);
+    }
+    el.classList.toggle('on', activeMetrics.has(m));
+    el.querySelector('.mt-chk').textContent = activeMetrics.has(m) ? '✓' : '';
+    if (currentPage === 'rq2') renderRQ2();
+  });
+});
+
+/* ===================== TABLE EVENTS ===================== */
+document.querySelectorAll('[data-sort]').forEach(function(btn) {
+  btn.addEventListener('click', function() { tableSort = btn.dataset.sort; renderTable(); });
+});
+document.querySelectorAll('[data-topn]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    tableTopN = parseInt(btn.dataset.topn);
+    document.querySelectorAll('[data-topn]').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.topn === btn.dataset.topn);
     });
-  </script>
+    renderTable();
+  });
+});
+document.querySelectorAll('th[data-col]').forEach(function(th) {
+  th.addEventListener('click', function() {
+    tableSort = th.dataset.col;
+    document.querySelectorAll('[data-sort]').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.sort === tableSort);
+    });
+    renderTable();
+  });
+});
+
+/* ===================== INIT ===================== */
+fetch('./data/processed/dashboard_data.json')
+  .then(function(r) {
+    if (!r.ok) throw new Error('Falha ao carregar dados. Use: python -m http.server');
+    return r.json();
+  })
+  .then(function(data) {
+    RAW = data;
+    navigateTo('overview');
+  })
+  .catch(function(err) {
+    document.getElementById('main').insertAdjacentHTML('afterbegin',
+      '<div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5;padding:14px 18px;border-radius:10px;margin:16px;font-size:12px;">⚠️ ' + err.message + '</div>'
+    );
+  });
+</script>
 </body>
 </html>
