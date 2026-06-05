@@ -7,18 +7,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:    #07101d;
-      --surf:  #0c1624;
-      --card:  #101c2e;
+      --bg:    #f9fcfd;
+      --surf:  white;
+      --card:  white;
       --bd:    rgba(148,163,184,0.1);
-      --text:  #e2e8f0;
+      --text:  black;
       --muted: #60748a;
       --sml:   #14b8a6;
       --med:   #f59e0b;
       --lrg:   #ef4444;
       --blue:  #3b82f6;
       --sw:    230px;
-      --r:     10px;
+      --r:     0px;
     }
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -59,7 +59,7 @@
     }
     .sb-nav button .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; opacity: .4; }
     .sb-nav button:hover { background: rgba(148,163,184,.07); color: var(--text); }
-    .sb-nav button.active { color: #fbbf24; background: rgba(245,158,11,.08); }
+    .sb-nav button.active { color: black; background: #35392914; }
     .sb-nav button.active .dot { opacity: 1; }
 
     .sb-sep { height: 1px; background: var(--bd); margin: 4px 12px; }
@@ -190,14 +190,13 @@
 <!-- ===== SIDEBAR ===== -->
 <aside id="sb">
   <div class="sb-head">
-    <span class="sb-badge">LAB 04</span>
     <div class="sb-title">Commits &amp; Manutenibilidade</div>
-    <div class="sb-sub">500 repos · Python · OSS</div>
+    <div class="sb-sub">500 repos em py</div>
   </div>
 
   <nav class="sb-nav">
     <button class="active" data-page="overview">
-      <span class="dot" style="background:var(--blue)"></span>Visão Geral
+      <span class="dot" style="background:var(--blue)"></span>Dataset
     </button>
     <button data-page="rq1">
       <span class="dot" style="background:var(--sml)"></span>RQ1 — Bugs
@@ -245,18 +244,17 @@
   <!-- PAGE: OVERVIEW -->
   <div class="page active" id="page-overview">
     <div class="ph">
-      <span class="ph-badge" style="background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:#93c5fd;">Overview</span>
-      <span class="ph-title">Dataset · Python Open Source</span>
+      <span class="ph-title">Dataset</span>
     </div>
 
     <!-- Definition box -->
     <div style="display:grid;gap:10px;margin-bottom:16px;">
       <div style="background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.18);border-radius:9px;padding:11px 14px;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24;margin-bottom:7px;">Definição de Commits/Pull Requests</div>
-        <div style="font-size:11px;color:#94a3b8;line-height:1.7;">
-          <span style="color:#14b8a6;font-weight:600;">Pequeno</span> — ≤ 5 arquivos <em>e</em> ≤ 25 LOC (mediana: ~6 LOC)<br>
-          <span style="color:#f59e0b;font-weight:600;">Médio</span> — 26–125 LOC <em>e</em> ≤ 5 arquivos (mediana: ~48 LOC)<br>
-          <span style="color:#ef4444;font-weight:600;">Grande</span> — &gt; 5 arquivos <em>ou</em> &gt; 125 LOC (mediana: ~580 LOC)
+        <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:black;margin-bottom:7px;">Definição de Commits/Pull Requests</div>
+        <div style="font-size:11px;color:rgb(65, 65, 65);line-height:1.7;">
+          <span style="color: rgb(65, 65, 65); font-weight:600;">Pequeno</span> — ≤ 5 arquivos <em>e</em> ≤ 25 LOC (mediana: ~6 LOC)<br>
+          <span style="color: rgb(65, 65, 65); font-weight:600;">Médio</span> — 26–125 LOC <em>e</em> ≤ 5 arquivos (mediana: ~48 LOC)<br>
+          <span style="color: rgb(65, 65, 65); font-weight:600;">Grande</span> — &gt; 5 arquivos <em>ou</em> &gt; 125 LOC (mediana: ~580 LOC)
         </div>
       </div>
     </div>
@@ -309,8 +307,7 @@
   <!-- PAGE: RQ1 -->
   <div class="page" id="page-rq1">
     <div class="ph">
-      <span class="ph-badge" style="background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:#5eead4;">RQ1</span>
-      <span class="ph-title">Tamanho do commit vs. Ocorrência de bugs</span>
+      <span class="ph-title">RQ1: Tamanho do commit vs. Ocorrência de bugs</span>
     </div>
     <p class="ph-hint"><strong>Hipótese:</strong> Commits que introduzem bugs (BICs) tendem a ser maiores em LOC do que os demais. Mudanças volumosas envolvem mais código e mais carga cognitiva, abrindo espaço para efeitos colaterais.</p>
 
@@ -354,8 +351,7 @@
   <!-- PAGE: RQ2 -->
   <div class="page" id="page-rq2">
     <div class="ph">
-      <span class="ph-badge" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:#fbbf24;">RQ2</span>
-      <span class="ph-title">Tamanho de PR vs. Complexidade de revisão</span>
+      <span class="ph-title">RQ2: Tamanho de PR vs. Complexidade de revisão</span>
     </div>
     <p class="ph-hint">Métricas de revisão por classe de PR. Ative/desative métricas no painel lateral.</p>
 
@@ -388,8 +384,7 @@
   <!-- PAGE: RQ3 -->
   <div class="page" id="page-rq3">
     <div class="ph">
-      <span class="ph-badge" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#fca5a5;">RQ3</span>
-      <span class="ph-title">Tamanho do commit vs. Manutenibilidade</span>
+      <span class="ph-title">RQ3: Tamanho do commit vs. Manutenibilidade</span>
     </div>
     <p class="ph-hint">Commits menores podem estar associados a um ciclo de manutenção mais ágil (menor MTTR), facilitando correções rápidas. Por outro lado, commits grandes podem gerar maior incidência de reverts devido à dificuldade de validação completa da mudança antes do merge.</p>
 
@@ -435,7 +430,6 @@ let activeSizes   = new Set(['small','medium','large']);
 let activeMetrics = new Set(['comments','density','firstReview','close']);
 let tableSort = 'stars';
 let tableTopN = 10;
-let currentPage = 'overview';
 const CI = {};
 
 /* ===================== CHART HELPERS ===================== */
@@ -581,7 +575,7 @@ function renderOverview() {
     kpis.push({ v: pct(item.total/totC), l:'Commits '+S_LBL[s], c: S_CLR[s], s: fmtK(item.total)+' commits' });
   });
   document.getElementById('kpi-overview').innerHTML = kpis.map(function(k) {
-    return '<div class="kpi" style="border-left:3px solid '+k.c+'">' +
+    return '<div class="kpi">' +
       '<div class="v" style="color:'+k.c+'">'+k.v+'</div>' +
       '<div class="l">'+k.l+'</div>' +
       (k.s ? '<div class="s">'+k.s+'</div>' : '') +
@@ -657,7 +651,7 @@ function renderRQ1() {
 
   // KPI: Taxa de BIC por tamanho + LOC mediano
   document.getElementById('kpi-rq1').innerHTML = f.map(function(i) {
-    return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
+    return '<div class="kpi">' +
       '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.bic_rate)+'</div>' +
       '<div class="l">BICs · '+S_LBL[i.size]+'</div>' +
       '<div class="s">'+i.bic_count.toLocaleString('pt-BR')+' de '+i.total.toLocaleString('pt-BR')+' | LOC: '+i.loc_median_bic+'</div>' +
@@ -718,7 +712,7 @@ function renderRQ2() {
   var clr = f.map(function(i){ return S_CLR[i.size]; });
 
   document.getElementById('kpi-rq2').innerHTML = f.map(function(i) {
-    return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
+    return '<div class="kpi">' +
       '<div class="v" style="color:'+S_CLR[i.size]+'">'+i.close_median_hours.toFixed(1)+'h</div>' +
       '<div class="l">Fechamento · '+S_LBL[i.size]+'</div>' +
       '<div class="s">'+fmtK(i.pr_count)+' PRs</div>' +
@@ -773,7 +767,7 @@ function renderRQ3() {
 
   document.getElementById('kpi-rq3').innerHTML = fR.map(function(i) {
     var ccDensity = ccDensityMap[i.size] || 0;
-    return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
+    return '<div class="kpi">' +
       '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.revert_rate)+'</div>' +
       '<div class="l">Reverts · '+S_LBL[i.size]+'</div>' +
       '<div class="s">'+fmtK(i.revert)+' reverts</div>' +
