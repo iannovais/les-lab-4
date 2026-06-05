@@ -375,20 +375,15 @@
       <span class="ph-badge" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#fca5a5;">RQ3</span>
       <span class="ph-title">Tamanho do commit vs. Manutenibilidade</span>
     </div>
-    <p class="ph-hint">Reverts e complexidade ciclomática (CC) como proxies de manutenibilidade.</p>
+    <p class="ph-hint">Commits menores podem estar associados a um ciclo de manutenção mais ágil (menor MTTR), facilitando correções rápidas. Por outro lado, commits grandes podem gerar maior incidência de reverts devido à dificuldade de validação completa da mudança antes do merge.</p>
 
     <div class="krow" id="kpi-rq3"></div>
 
-    <div class="cg cg3" style="margin-bottom:12px;">
+    <div class="cg cg2" style="margin-bottom:12px;">
       <div class="cc">
         <div class="cc-t">Taxa de reverts (%)</div>
         <div class="cc-sub">Commits revertidos / total</div>
         <div class="cw h220"><canvas id="c-q3-reverts"></canvas></div>
-      </div>
-      <div class="cc">
-        <div class="cc-t">CC médio — mediana</div>
-        <div class="cc-sub">Complexidade ciclomática média por commit</div>
-        <div class="cw h220"><canvas id="c-q3-cc-mean"></canvas></div>
       </div>
       <div class="cc">
         <div class="cc-t">CC máximo — mediana</div>
@@ -503,6 +498,27 @@ function mkDoughnut(id, labels, vals, colors) {
         }
       },
       cutout: '60%'
+    }
+  });
+}
+
+function mkArea(id, labels, datasets, opts) {
+  opts = opts || {};
+  destroy(id);
+  var el = document.getElementById(id);
+  if (!el) return;
+  CI[id] = new Chart(el.getContext('2d'), {
+    type: 'line',
+    data: { labels: labels, datasets: datasets },
+    options: {
+      maintainAspectRatio: false,
+      animation: { duration: 0 },
+      plugins: {
+        legend: { display: false },
+        tooltip: opts.tip ? { callbacks: { label: opts.tip } } : {}
+      },
+      scales: sc(opts.sc),
+      interaction: { mode: 'index', intersect: false }
     }
   });
 }
@@ -673,21 +689,33 @@ function renderRQ3() {
   var cLbl = fCC.map(function(i){ return S_LBL[i.size]; });
   var cClr = fCC.map(function(i){ return S_CLR[i.size]; });
 
+  // Mapa de CC por size para acesso rápido
+  var ccMap = {};
+  var ccDensityMap = {};
+  fCC.forEach(function(i){ 
+    ccMap[i.size] = i.cc_mean_median;
+    ccDensityMap[i.size] = i.cc_density_median;
+  });
+
   document.getElementById('kpi-rq3').innerHTML = fR.map(function(i) {
+    var ccDensity = ccDensityMap[i.size] || 0;
     return '<div class="kpi" style="border-left:3px solid '+S_CLR[i.size]+'">' +
       '<div class="v" style="color:'+S_CLR[i.size]+'">'+pct(i.revert_rate)+'</div>' +
       '<div class="l">Reverts · '+S_LBL[i.size]+'</div>' +
       '<div class="s">'+fmtK(i.revert)+' reverts</div>' +
+      '<div class="s" style="margin-top:6px; padding-top:6px; border-top:1px solid rgba(148,163,184,.15);">CC/LOC: '+ccDensity.toFixed(4)+'</div>' +
       '</div>';
   }).join('');
 
-  mkBar('c-q3-reverts', rLbl,
-    [{ data: fR.map(function(i){ return parseFloat((i.revert_rate*100).toFixed(2)); }), backgroundColor: rClr, borderRadius:5 }],
-    { tip: function(ctx){ return ctx.parsed.y.toFixed(2)+'%'; } }
-  );
-  mkBar('c-q3-cc-mean', cLbl,
-    [{ data: fCC.map(function(i){ return i.cc_mean_median; }), backgroundColor: cClr, borderRadius:5 }]
-  );
+  mkArea('c-q3-reverts', rLbl, [{
+    data: fR.map(function(i){ return parseFloat((i.revert_rate*100).toFixed(2)); }),
+    backgroundColor: 'rgba(239,68,68,.15)',
+    borderColor: '#ef4444',
+    pointBackgroundColor: rClr,
+    pointRadius: 6,
+    tension: 0.3,
+    fill: true
+  }], { tip: function(ctx){ return ctx.parsed.y.toFixed(2)+'%'; } });
   mkBar('c-q3-cc-max', cLbl,
     [{ data: fCC.map(function(i){ return i.cc_max_median; }), backgroundColor: cClr, borderRadius:5 }]
   );
